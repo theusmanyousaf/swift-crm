@@ -4,9 +4,9 @@ import Logo from '../../../public/assets/Company.svg'
 
 const Footer = () => {
     return (
-        <footer className="pt-8 mb-[29px] mx-[70.5px]">
+        <footer className="xl:pb-7 xl:pt-[17px] px-8 md:px-0 py-[17px] md:mx-[62px] xl:mx-[70.5px]">
             {/* Upper Part */}
-            <div className="flex justify-between py-[10px] mt-[17px]">
+            <div className="flex justify-between py-[10px]">
                 <div>
                     <Image src={Logo} alt="Logo" />
                 </div>
@@ -29,8 +29,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Lower Part */}
-            <div className="flex flex-col md:flex-row justify-between items-center my-4">
+            <div className="flex flex-col md:flex-row justify-between items-center md:mb-6 md:mt-[14px] xl:my-4">
                 <div className="text-gray-600">
                     <p className="text-sm">
                         Crafting Connections, One Customer at a Time.
@@ -38,18 +37,19 @@ const Footer = () => {
                 </div>
 
                 <div className="flex space-x-4">
-                    <a href="#" className="text-purple-600 w-[29px] h-[29px]">
+                    <a href="#" className="text-purple-600 text-3xl w-[29px] h-[29px]">
                         <FaFacebook />
                     </a>
-                    <a href="#" className="text-purple-600 w-[29px] h-[29px]">
+                    <a href="#" className="text-purple-600 text-3xl w-[29px] h-[29px]">
                         <FaInstagram />
                     </a>
-                    <a href="#" className="text-purple-600 w-[29px] h-[29px]">
+                    <a href="#" className="text-purple-600 text-3xl w-[29px] h-[29px]">
                         <FaTwitter />
                     </a>
                 </div>
             </div>
-            <div className="flex justify-between items-center border-t-2 pt-[30px] border-gray-200">
+            {/* Lower Part */}
+            <div className="flex justify-between items-center border-t-2 md:pt-[22px] xl:pt-[30px] border-gray-200">
                 <div className="text-gray-600 text-sm py-[5px]">
                     <p>Privacy Policy</p>
                 </div>
