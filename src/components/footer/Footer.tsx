@@ -5,8 +5,9 @@ import Logo from '/public/assets/Company.svg'
 const Footer = () => {
     {/* I can use Grid layout for footer in mobile display then adjust the y of every element in grid */ }
     return (
-        <footer className="xl:pb-7 xl:pt-[17px] px-8 md:px-0 py-[17px] md:mx-[62px] xl:mx-[70.5px]">
+        <footer className="xl:pb-7 xl:pt-[17px] px-8 py-[17px] md:px-[62px] xl:px-[70.5px] bg-white">
             {/* Upper Part */}
+
             <div className="flex flex-col mb-10 sm:mb-0 sm:flex-row gap-5 sm:gap-0 justify-between sm:py-2.5">
                 <div>
                     <Image src={Logo} alt="Logo" />
@@ -78,7 +79,9 @@ const Footer = () => {
                     </a>
                 </div>
             </div>
+
             {/* Lower Part */}
+            
             <div className="flex flex-col justify-between gap-3 sm:gap-0 sm:items-center sm:flex-row sm:border-t-2 my-10 sm:my-0 sm:pt-[22px] xl:pt-[30px] border-gray-200">
                 <div className="text-gray-600 text-sm py-[5px]">
                     <p>Privacy Policy</p>
