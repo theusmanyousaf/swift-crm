@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import Footer from "@/components/footer/Footer";
 import Image from "next/image";
 import bg from '/public/assets/Topology-1.png'
+import SideNav from "@/components/sidenav/SideNav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-gray-50`}>
-        {/* <img src='/assets/Topology-1.png' alt="img" className="min-w-[940px] h-[1190px] mt-64"/> */}
+        <SideNav />
         {children}
         <div className="bg-custom-bg h-[1190px] w-[940px] bg-fixed">
 
