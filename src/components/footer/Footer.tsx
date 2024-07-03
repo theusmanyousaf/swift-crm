@@ -23,19 +23,19 @@ const Footer = () => {
                 {/* hidden in mobile view */}
                 <div className="hidden sm:flex gap-8 text-gray-600 items-center">
                     <div>
-                        <a href="#" className="block text-sm hover:text-gray-800">Dashboard</a>
+                        <a href="/dashboard" className="block text-sm hover:text-gray-800">Dashboard</a>
                     </div>
                     <div>
-                        <a href="#" className="block text-sm hover:text-gray-800">Customers</a>
+                        <a href="/customers" className="block text-sm hover:text-gray-800">Customers</a>
                     </div>
                     <div>
-                        <a href="#" className="block text-sm hover:text-gray-800">Order Overview</a>
+                        <a href="/order-overview" className="block text-sm hover:text-gray-800">Order Overview</a>
                     </div>
                     <div>
-                        <a href="#" className="block text-sm hover:text-gray-800">Analytics</a>
+                        <a href="/analytics" className="block text-sm hover:text-gray-800">Analytics</a>
                     </div>
                     <div>
-                        <a href="#" className="block text-sm hover:text-gray-800">Accounting</a>
+                        <a href="/documents" className="block text-sm hover:text-gray-800">Documents</a>
                     </div>
                 </div>
             </div>
