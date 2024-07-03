@@ -21,9 +21,9 @@ export default function RootLayout({
         <html lang="en">
             <body className={inter.className}>
                 <Providers>
-                    <div className="block sm:flex bg-no-repeat bg-gray-50 bg-custom-bg">
+                    <div className="sm:flex bg-no-repeat bg-gray-50 bg-custom-bg sm:pl-[72px] sm:pr-[72px]">
                         <SideNav />
-                        <div>
+                        <div className="w-full pl-[43px] sm:pl-0">
                             {children}
                         </div>
                     </div>

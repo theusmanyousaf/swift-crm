@@ -20,7 +20,7 @@ export default function SideNav() {
     };
 
     return (
-        <div className="sm:ml-[72px] sm:mt-[22px] h-auto sm:h-[752px] w-full sm:w-[220px] bg-white shadow-xl rounded-md sm:px-4 sm:py-8">
+        <div className="sm:mt-[22px] h-auto sm:h-[752px] w-full sm:w-[220px] bg-white shadow-xl rounded-md sm:px-4 sm:py-8">
             <div className="flex justify-between items-center py-2 sm:py-0 sm:px-0 px-11">
                 <div className="sm:mb-8 py-[5px] sm:py-0 pr-4 sm:pr-0 sm:px-4 sm:text-left">
                     <a href="/dashboard"><Image src={Logo} alt="SwiftCRM" /></a>
