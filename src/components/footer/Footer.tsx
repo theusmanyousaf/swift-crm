@@ -10,7 +10,7 @@ const Footer = () => {
 
             <div className="flex flex-col mb-10 sm:mb-0 sm:flex-row gap-5 sm:gap-0 justify-between sm:py-2.5">
                 <div>
-                    <Image src={Logo} alt="Logo" />
+                    <a href="/dashboard"><Image src={Logo} alt="SwiftCRM" /></a>
                 </div>
 
                 {/* visible in moblie only */}
@@ -81,7 +81,7 @@ const Footer = () => {
             </div>
 
             {/* Lower Part */}
-            
+
             <div className="flex flex-col justify-between gap-3 sm:gap-0 sm:items-center sm:flex-row sm:border-t-2 my-10 sm:my-0 sm:pt-[22px] xl:pt-[30px] border-gray-200">
                 <div className="text-gray-600 text-sm py-[5px]">
                     <p>Privacy Policy</p>
