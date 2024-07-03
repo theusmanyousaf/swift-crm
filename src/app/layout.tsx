@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import Footer from "@/components/footer/Footer";
 import SideNav from "@/components/sidenav/SideNav";
-import Providers from "@/store/provider";
+import Providers from "@/store/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,13 +19,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gray-50`}>
-        <Providers>
-          <SideNav />
-          {children}
-        </Providers>
-        <div className="bg-custom-bg h-[1190px] w-[940px] bg-fixed"></div>
-        <Footer />
+      <body className={inter.className}>
+        {children}
       </body>
     </html>
   );
