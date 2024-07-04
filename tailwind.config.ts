@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      dropShadow: {
+        'glow': [
+          '0 0 2px rgba(214, 126, 244, 1)',
+          '0 0 2px rgba(214, 126, 244, 1)'
+        ],
+      },
       backgroundImage: {
         'custom-bg': "url('/assets/Topology.png')",
       },
