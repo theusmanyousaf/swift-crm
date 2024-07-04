@@ -1,4 +1,4 @@
-import Image, {StaticImageData} from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import CBowl from '/public/assets/bowl.png'
 import WBowl from '/public/assets/bowl2.png'
 import Mug from '/public/assets/cup.png'
@@ -40,14 +40,16 @@ export default function BestSellingProducts() {
         }
     ]
     return (
-        <div className='flex flex-col gap-y-2.5 px-3.5 bg-white w-[233px] h-[409px] border rounded-lg pt-5'>
+        <div className='flex flex-col gap-y-3 p-4 bg-white w-[285px] h-[500px] border rounded-lg pt-5'>
             <h1 className='font-semibold'>Best Selling Products</h1>
             <hr />
             {products.map((product, index) => (
-                <div key={index} className='bg-gray-50 flex items-center justify-between h-[67.9px] pl-1.5'>
-                    <Image src={product.image} alt='product' width={54.81} height={54.81} />
-                    <div className='flex flex-col gap-1'><p className='text-xs font-semibold text-purple-800'>{product.title}</p><p className='font-normal text-xs text-gray-400'>{product.category}</p></div>
-                    <p className='text-xs font-semibold text-purple-800 pr-2'>${product.price}</p>
+                <div key={index} className='bg-gray-100 rounded-md flex items-center justify-between p-2'>
+                    <div className='flex items-center gap-3'>
+                        <Image src={product.image} alt='product' className='w-[67px] h-[67px]' />
+                        <div className='flex flex-col'><p className='text-xs font-semibold text-purple-800'>{product.title}</p><p className='font-normal text-xs text-gray-400'>{product.category}</p></div>
+                    </div>
+                    <p className='text-xs font-semibold text-purple-800'>${product.price}</p>
                 </div>
             ))
             }
