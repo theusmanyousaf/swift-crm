@@ -1,51 +1,20 @@
-type ordersType = {
-  currentOrders: number
-  targetOrders: number
-}
+import { BsFileEarmarkRuled } from "react-icons/bs";
+import Graph1 from '/public/assets/Graph.png'
+import Image from "next/image";
 
-const MonthlyIncome = ({ currentOrders, targetOrders }: ordersType) => {
-  const percentage = ((currentOrders / targetOrders) * 100);
-  const radius = 30;
-  const circumference = 2 * Math.PI * radius;
-  const offset = circumference - (percentage / 100) * circumference;
-
+export default function MonthlyIncome() {
   return (
-    <div className="bg-purple-500 text-white rounded-lg shadow-lg flex flex-row md:flex-col justify-around items-center w-[340px] h-[196px] lg:w-[124px] lg:h-[196px] xl:w-40 xl:h-60">
-      <div className="relative w-[185px] h-[183px] md:h-36 md:w-36">
-        <div className="absolute inset-0">
-          <svg viewBox="0 0 100 100">
-            {/* Background circle */}
-            <circle
-              className="stroke-current text-purple-300"
-              strokeWidth="14"
-              cx="50"
-              cy="50"
-              r={radius}
-              fill="transparent"
-            ></circle>
-            {/* Progress circle */}
-            <circle
-              className="stroke-white drop-shadow-glow"
-              strokeWidth="15"
-              cx="50"
-              cy="50"
-              r={radius}
-              fill="transparent"
-              strokeDasharray={circumference}
-              strokeDashoffset={offset}
-            ></circle>
-          </svg>
+    <div className="flex gap-3 px-4 h-60 w-[561px] bg-white rounded-lg border">
+        <div className="mt-6 mb-5 flex flex-col gap-[17px] w-[225px]">
+            <h1 className="font-semibold">Monthly Income</h1>
+            <div className="flex items-center justify-between"><h1 className="text-2xl font-bold">$ 6,567.00</h1><button className="rounded-full text-[10.5px] bg-lime-200 px-2 mr-3">+ 5.6%</button></div>
+            <p className="text-gray-500 text-sm font-medium">Compared to the previous month</p>
+            <hr className="border border-gray-300 w-full"/>
+            <div className="flex gap-3 items-center"><div className="flex bg-purple-500 rounded-full items-center justify-center w-7 h-7"><BsFileEarmarkRuled className="w-3 h-3 text-white"/></div><div className="flex flex-col font-medium gap-2 text-[15px]"><h1>Accounting</h1><p className="text-gray-500 font-barlow">July 1, 2023 - July 31, 2023</p></div></div>
         </div>
-        <p className="absolute inset-0 flex items-center justify-center font-bold text-white text-2xl font-sans">{`${percentage}%`}</p>
-      </div>
-      <div className="flex flex-col justify-between items-center">
-        <p className="font-bold">
-          <span className="text-2xl">{currentOrders}/</span>{targetOrders}
-        </p>
-        <p className="text-xs font-semibold">Target Orders</p>
-      </div>
+        <div className="py-6 bg-white">
+          <Image src={Graph1} alt="Monthly Graph"/>
+        </div>
     </div>
-  );
-};
-
-export default MonthlyIncome;
+  )
+}

@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        barlow: ['Barlow', "sans-serif"],
+      },
       dropShadow: {
         'glow': [
           '0 0 2px rgba(214, 126, 244, 1)',
