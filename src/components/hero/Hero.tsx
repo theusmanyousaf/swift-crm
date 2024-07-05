@@ -4,7 +4,7 @@ import { BsSearch } from "react-icons/bs"
 
 export default function Hero() {
     return (
-        <div className="flex items-center justify-between w-auto xl:max-w-[1048px] mt-[17px] lg:mt-[31px] lg:mb-10 xl:mt-10 xl:mb-[59px]">
+        <div className="flex items-center justify-between xl:max-w-[1048px] mt-[17px] lg:mt-[31px] lg:mb-10 xl:mt-10 xl:mb-[59px]">
             <div className="flex items-center gap-5 xl:gap-6 w-auto">
                 <Image src={Avatar} alt="Avatar" className="xl:w-[89px] xl:h-[89px] lg:w-20 lg:h-20 w-[61px] h-[61px]" />
                 <div>
