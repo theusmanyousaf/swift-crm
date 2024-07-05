@@ -33,7 +33,7 @@ export default function MonthlySummary() {
     ];
 
     return (
-        <div className="flex gap-5 w-full">
+        <div className="flex gap-[21px]">
             {dataCards.map((data, index) => (
                 <div key={index} className="flex flex-col items-start gap-2.5 px-[13px] py-[19px] border rounded-lg bg-white w-[233px] h-60">
                     <div className="flex bg-purple-500 rounded-full items-center justify-center w-6 h-6">

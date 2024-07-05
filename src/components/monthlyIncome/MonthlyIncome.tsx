@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function MonthlyIncome() {
   return (
-    <div className="flex gap-3 px-4 h-60 w-[561px] bg-white rounded-lg border">
+    <div className="flex gap-3 px-4 h-60 w-[560px] bg-white rounded-lg border">
         <div className="mt-6 mb-5 flex flex-col gap-[17px] w-[225px]">
             <h1 className="font-semibold">Monthly Income</h1>
             <div className="flex items-center justify-between"><h1 className="text-2xl font-bold">$ 6,567.00</h1><button className="rounded-full text-[10.5px] bg-lime-200 px-2 mr-3">+ 5.6%</button></div>
