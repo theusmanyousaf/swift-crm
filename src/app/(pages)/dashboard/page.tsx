@@ -1,4 +1,5 @@
 import BestSellingProducts from "@/components/bestSellingProducts/BestSellingProducts"
+import CityOrderStats from "@/components/cityOrderStats/CityOrderStats"
 import Hero from "@/components/hero/Hero"
 import MonthlyIncome from "@/components/monthlyIncome/MonthlyIncome"
 import MonthlySummary from "@/components/monthlySummary/MonthlySummary"
@@ -19,7 +20,10 @@ export default function dashboard() {
         </div>
         <BestSellingProducts />
       </div>
-      <NewCustomers />
+      <div className="flex gap-[21px] mt-[22px] mb-[67px]">
+        <NewCustomers />
+        <CityOrderStats />
+      </div>
     </div>
   )
 }

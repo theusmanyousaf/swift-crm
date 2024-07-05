@@ -20,7 +20,7 @@ export default function SideNav() {
     };
 
     return (
-        <div className="sm:mt-[22px] h-auto sm:h-[752px] w-full sm:w-[220px] bg-white shadow-xl rounded-md sm:px-4 sm:py-8">
+        <div className="sm:mt-[22px] h-auto sm:h-[752px] sm:min-w-[220px] sm:max-w-[220px] bg-white shadow-xl rounded-md sm:px-4 sm:py-8">
             <div className="flex justify-between items-center py-2 sm:py-0 sm:px-0 px-11">
                 <div className="sm:mb-8 py-[5px] sm:py-0 pr-4 sm:pr-0 sm:px-4 sm:text-left">
                     <a href="/dashboard"><Image src={Logo} alt="SwiftCRM" /></a>
@@ -39,35 +39,35 @@ export default function SideNav() {
                     <div className="flex flex-col sm:gap-4 gap-2">
                         <div>
                             <a href="/dashboard" className="flex items-center py-2 px-4 bg-purple-100 text-purple-600 hover:text-purple-600 rounded-md">
-                                <RxDashboard className="mr-3" />
+                                <RxDashboard className="mr-2" />
                                 Dashboard
                             </a>
                         </div>
                         <div className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
-                            <BsBell className="mr-3" />
+                            <BsBell className="mr-2" />
                             Notifications
                         </div>
                         <div>
                             <a href="/customers" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
-                                <BsPeople className="mr-3" />
+                                <BsPeople className="mr-2" />
                                 Customers
                             </a>
                         </div>
                         <div>
                             <a href="/order-overview" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
-                                <BsCart2 className="mr-3" />
+                                <BsCart2 className="mr-2" />
                                 Order Overview
                             </a>
                         </div>
                         <div>
                             <a href="/analytics" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
-                                <BsBarChartLine className="mr-3" />
+                                <BsBarChartLine className="mr-2" />
                                 Analytics
                             </a>
                         </div>
                         <div>
                             <a href="/documents" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
-                                <BsFileEarmarkRuled className="mr-3" />
+                                <BsFileEarmarkRuled className="mr-2" />
                                 Documents
                             </a>
                         </div>
@@ -75,18 +75,18 @@ export default function SideNav() {
                     <div className="hidden sm:block py-2 text-xs text-gray-500 font-semibold mb-4 mt-8">SUPPORT</div>
                     <div className="flex flex-col sm:gap-4 gap-2">
                         <div className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
-                            <BsInfoCircle className="mr-3" />
+                            <BsInfoCircle className="mr-2" />
                             Help
                         </div>
                         <div className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
-                            <FiSettings className="mr-3" />
+                            <FiSettings className="mr-2" />
                             Settings
                         </div>
                     </div>
                 </nav>
                 <div className="sm:pt-8 pt-2 ml-3 sm:ml-0 max-w-[351px]">
                     <a href="/" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
-                        <TbLogout2 className="mr-3" />
+                        <TbLogout2 className="mr-2" />
                         Log Out
                     </a>
                 </div>
