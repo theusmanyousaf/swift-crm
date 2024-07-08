@@ -40,7 +40,7 @@ export default function BestSellingProducts() {
         }
     ]
     return (
-        <div className='flex flex-col gap-y-3 p-4 bg-white w-[285px] h-[500px] border rounded-lg pt-5'>
+        <div className='flex flex-col gap-y-3 p-4 bg-white w-full border rounded-lg pt-5'>
             <h1 className='font-semibold'>Best Selling Products</h1>
             <hr />
             {products.map((product, index) => (

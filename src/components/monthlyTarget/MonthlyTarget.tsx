@@ -10,7 +10,7 @@ const MonthlyTarget = ({ currentOrders, targetOrders }: ordersType) => {
   const offset = circumference - (percentage / 100) * circumference;
 
   return (
-    <div className="bg-gradient-to-b from-purple-700 to-purple-400  text-white rounded-lg flex flex-row md:flex-col justify-center items-center w-[340px] h-[196px] lg:w-[124px] lg:h-[196px] xl:w-40 xl:h-60">
+    <div style={{backgroundImage: 'linear-gradient(to bottom right, #9A55FF 50%, #D355FF)'}}  className = "text-white rounded-lg flex flex-row md:flex-col justify-center items-center w-[340px] h-[196px] lg:w-[124px] lg:h-[196px] xl:w-40 xl:h-60" >
       <div className="relative w-[185px] h-[183px] md:h-36 md:w-36">
         <div className="absolute inset-0">
           <svg viewBox="0 0 100 100">
@@ -44,7 +44,7 @@ const MonthlyTarget = ({ currentOrders, targetOrders }: ordersType) => {
         </p>
         <p className="text-xs font-semibold">Target Orders</p>
       </div>
-    </div>
+    </div >
   );
 };
 

@@ -8,7 +8,7 @@ export default function Customers() {
 
   return (
     <div className='ml-[41px]'>
-      <Header />
+      <Header title='Customers'/>
       <CustomerSummary />
       <DeviceUsers />
       <CustomerDemographics />
