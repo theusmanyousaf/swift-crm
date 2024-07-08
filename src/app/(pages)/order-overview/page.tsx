@@ -1,4 +1,5 @@
 import BestSellingProducts from '@/components/bestSellingProducts/BestSellingProducts'
+import CountrySalesStats from '@/components/countrySalesStats/CountrySalesStats'
 import Header from '@/components/header/Header'
 import SalesStatistics from '@/components/salesStats/SalesStats'
 import React from 'react'
@@ -12,6 +13,7 @@ export default function OrderOverview() {
           <SalesStatistics />
           <BestSellingProducts />
         </div>
+        <CountrySalesStats />
       </div>
     </div>
   )
