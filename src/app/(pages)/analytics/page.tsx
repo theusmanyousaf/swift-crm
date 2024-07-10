@@ -1,5 +1,6 @@
 import Header from '@/components/header/Header'
 import OverallSales from '@/components/overallSales/OverallSales'
+import SalesPerWeek from '@/components/salesPerWeek/SalesPerWeek'
 import SourcesOfPurchase from '@/components/sourcesOfPurchase/SourcesOfPurchase'
 import Visitors from '@/components/visitors/Visitors'
 
@@ -11,7 +12,10 @@ export default function Analytics() {
         <OverallSales />
         <Visitors />
       </div>
-      <SourcesOfPurchase />
+      <div className='flex gap-5 my-6'>
+        <SourcesOfPurchase />
+        <SalesPerWeek />
+      </div>
     </div>
   )
 }

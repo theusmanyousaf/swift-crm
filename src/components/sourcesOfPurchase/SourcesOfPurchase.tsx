@@ -3,7 +3,7 @@ import Graph from '/public/assets/PieChart.png'
 
 export default function SourcesOfPurchase() {
     return (
-        <div className='flex flex-col gap-3 bg-white border rounded-lg py-6 px-4'>
+        <div className='flex flex-col gap-3 bg-white border rounded-lg pt-6 pb-3 px-4'>
             <h1 className='font-semibold'>Sources Of Purchase</h1>
             <hr />
             <Image src={Graph} alt='graph' />
