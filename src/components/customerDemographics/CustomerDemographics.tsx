@@ -8,7 +8,7 @@ import {
     GeographyProps,
 } from 'react-simple-maps';
 import { scaleQuantize } from 'd3-scale';
-import { customerData } from '@/constants/customerData';
+import { customerData } from '@/constants/customerDemographicData';
 
 // Alternative geoUrl for US states
 const geoUrl = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
