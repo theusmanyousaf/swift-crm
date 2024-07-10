@@ -11,8 +11,9 @@ type CustomerType = {
     date: string
     name: string
     status: string
-    total: string
+    amount: string
     imageUrl: StaticImageData
+    country: string
 }
 
 export const customers: CustomerType[] = [
@@ -21,112 +22,126 @@ export const customers: CustomerType[] = [
         date: "31 Jul 2023",
         name: "Jacob Swanson",
         status: "Success",
-        total: "$999.00",
+        amount: "$999.00",
         imageUrl: Avatar1,
+        country: "United States"
     },
     {
         id: 2,
         date: "31 Jul 2023",
         name: "Amelia Johnson",
         status: "Success",
-        total: "$1999.00",
+        amount: "$1999.00",
         imageUrl: Avatar2,
+        country: "Canada"
     },
     {
         id: 3,
         date: "31 Jul 2023",
         name: "Jacob Swanson",
         status: "Pending",
-        total: "$2000.00",
+        amount: "$2000.00",
         imageUrl: Avatar3,
+        country: "France"
     },
     {
         id: 4,
         date: "31 Jul 2023",
         name: "Amelia Johnson",
         status: "Success",
-        total: "$399.00",
+        amount: "$399.00",
         imageUrl: Avatar4,
+        country: "United States"
     },
     {
         id: 5,
         date: "31 Jul 2023",
         name: "Jacob Swanson",
         status: "Pending",
-        total: "$799.00",
+        amount: "$799.00",
         imageUrl: Avatar5,
+        country: "Canada"
     },
     {
         id: 6,
         date: "31 Jul 2023",
         name: "Amelia Johnson",
         status: "Success",
-        total: "$500.00",
+        amount: "$500.00",
         imageUrl: Avatar6,
+        country: "United States"
     },
     {
         id: 7,
         date: "31 Jul 2023",
         name: "Jacob Swanson",
         status: "Success",
-        total: "$976.00",
+        amount: "$976.00",
         imageUrl: Avatar3,
+        country: "Brazil"
     },
     {
         id: 8,
         date: "31 Jul 2023",
         name: "Amelia Johnson",
         status: "Success",
-        total: "$159.00",
-        imageUrl: Avatar1
+        amount: "$159.00",
+        imageUrl: Avatar1,
+        country: "Canada"
     },
     {
         id: 9,
         date: "31 Jul 2023",
         name: "Jacob Swanson",
         status: "Success",
-        total: "$929.00",
+        amount: "$929.00",
         imageUrl: Avatar4,
+        country: "France"
     },
     {
         id: 10,
         date: "31 Jul 2023",
         name: "Amelia Johnson",
         status: "Success",
-        total: "$749.00",
-        imageUrl: Avatar2
+        amount: "$749.00",
+        imageUrl: Avatar2,
+        country: "France"
     },
     {
         id: 11,
         date: "31 Jul 2023",
         name: "Jacob Swanson",
         status: "Success",
-        total: "$632.00",
-        imageUrl: Avatar6
+        amount: "$632.00",
+        imageUrl: Avatar6,
+        country: "United States"
     },
     {
         id: 12,
         date: "31 Jul 2023",
         name: "Amelia Johnson",
         status: "Success",
-        total: "$489.00",
-        imageUrl: Avatar5
+        amount: "$489.00",
+        imageUrl: Avatar5,
+        country: "United States"
     },
     {
         id: 13,
         date: "31 Jul 2023",
         name: "Jacob Swanson",
         status: "Success",
-        total: "$762.00",
-        imageUrl: Avatar1
+        amount: "$762.00",
+        imageUrl: Avatar1,
+        country: "Canada"
     },
     {
         id: 14,
         date: "31 Jul 2023",
         name: "Amelia Johnson",
         status: "Success",
-        total: "$154.00",
-        imageUrl: Avatar3
+        amount: "$154.00",
+        imageUrl: Avatar3,
+        country: "United States"
     },
     // Add more customers as needed...
 ];
