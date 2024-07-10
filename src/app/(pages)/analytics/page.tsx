@@ -1,5 +1,6 @@
 import Header from '@/components/header/Header'
 import OverallSales from '@/components/overallSales/OverallSales'
+import SalesPerCountry from '@/components/salesPerCountry/SalesPerCountry'
 import SalesPerWeek from '@/components/salesPerWeek/SalesPerWeek'
 import SourcesOfPurchase from '@/components/sourcesOfPurchase/SourcesOfPurchase'
 import Visitors from '@/components/visitors/Visitors'
@@ -16,6 +17,7 @@ export default function Analytics() {
         <SourcesOfPurchase />
         <SalesPerWeek />
       </div>
+      <SalesPerCountry />
     </div>
   )
 }
