@@ -51,11 +51,11 @@ const CustomerDemographics = () => {
             </div>
             <div className="flex justify-start mt-3">
                 <div className="flex items-center mr-4">
-                    <div className="rounded-full w-4 h-4 bg-[#553c9a] mr-2"></div>
+                    <div className="rounded-full w-4 h-4 bg-[#553c9a] mr-2" />
                     <span>Majority Members</span>
                 </div>
                 <div className="flex items-center">
-                    <div className=" rounded-full w-4 h-4 bg-[#d6bdea] mr-2"></div>
+                    <div className=" rounded-full w-4 h-4 bg-[#d6bdea] mr-2" />
                     <span>Majority Non-Members</span>
                 </div>
             </div>

@@ -12,11 +12,11 @@ export default function OverallSales() {
                 </div>
                 <div className='flex'>
                     <div className="flex items-center mr-4">
-                        <div className="rounded-full w-2.5 h-2.5 bg-purple-500 mr-2"></div>
+                        <div className="rounded-full w-2.5 h-2.5 bg-purple-500 mr-2" />
                         <span className='text-gray-500 text-xs font-semibold'>Current Week</span>
                     </div>
                     <div className="flex items-center">
-                        <div className=" rounded-full w-2.5 h-2.5 bg-sky-500 mr-2"></div>
+                        <div className=" rounded-full w-2.5 h-2.5 bg-sky-500 mr-2" />
                         <span className='text-gray-500 text-xs font-semibold'>Last week</span>
                     </div>
                 </div>
