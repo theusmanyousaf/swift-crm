@@ -80,7 +80,7 @@ const NewCustomers = () => {
                             {customer.status}
                         </span>
                     </div>
-                    <div className='flex-1'>{customer.total}</div>
+                    <div className='flex-1'>{customer.amount}</div>
                 </div>
             ))}
 
