@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Logo from '/public/assets/Company.svg'
-
-import { FcGoogle } from "react-icons/fc";
-import { LoginGithub } from "@/components/login/LoginGithub";
+import { LoginGoogle } from "@/components/loginGoogle/LoginGoogle";
+import { LoginGithub } from "@/components/loginGithub/LoginGithub";
 
 export default function Home() {
   return (
@@ -81,13 +80,13 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-4 font-medium">
-            <div className="flex items-center gap-2 w-full rounded-md border px-12 py-1.5 shadow-sm cursor-pointer"><FcGoogle className="h-7 w-7" /><button>Google</button></div>
+            <LoginGoogle />
             <LoginGithub />
           </div>
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{' '}
-            <a href="#" className="font-semibold leading-6 text-purple-600 hover:text-purple-500">
+            <a href="/signup" className="font-semibold leading-6 text-purple-600 hover:text-purple-500">
               Sign Up
             </a>
           </p>
