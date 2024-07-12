@@ -44,7 +44,7 @@ export default function SideNav() {
                                 Dashboard
                             </a>
                         </div>
-                        <div className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
+                        <div className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md cursor-pointer">
                             <BsBell className="mr-2" />
                             Notifications
                         </div>
@@ -75,18 +75,18 @@ export default function SideNav() {
                     </div>
                     <div className="hidden sm:block py-2 text-xs text-gray-500 font-semibold mb-4 mt-8">SUPPORT</div>
                     <div className="flex flex-col sm:gap-4 gap-2">
-                        <div className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
+                        <div className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md cursor-pointer">
                             <BsInfoCircle className="mr-2" />
                             Help
                         </div>
-                        <div className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
+                        <div className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md cursor-pointer">
                             <FiSettings className="mr-2" />
                             Settings
                         </div>
                     </div>
                 </nav>
                 <div className="sm:pt-8 pt-2 ml-3 sm:ml-0 max-w-[351px]">
-                    <div onClick={() => logout()} className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
+                    <div onClick={() => logout()} className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md cursor-pointer">
                         <TbLogout2 className="mr-2" />
                         Log Out
                     </div>
