@@ -1,14 +1,16 @@
+import { auth } from "@/auth"
 import Avatar from "/public/assets/avatar.png"
 import Image from "next/image"
 import { BsSearch } from "react-icons/bs"
 
-export default function Hero() {
+export default async function Hero() {
+    const session = await auth();
     return (
         <div className="flex items-center justify-between xl:max-w-[1048px] mt-[17px] lg:mt-[31px] lg:mb-10 xl:mt-10 xl:mb-[59px]">
             <div className="flex items-center gap-5 xl:gap-6 w-auto">
-                <Image src={Avatar} alt="Avatar" className="xl:w-[89px] xl:h-[89px] lg:w-20 lg:h-20 w-[61px] h-[61px]" />
+                {session?.user?.image && <Image src={session?.user?.image || ""} alt="Avatar" width={500} height={500} className="xl:w-[89px] xl:h-[89px] lg:w-20 lg:h-20 rounded-full" />}
                 <div>
-                    <h1 className="font-bold text-base sm:text-xs lg:text-xl xl:text-2xl">Welcome Back, <span className="text-purple-500">Sophia Chester</span></h1>
+                    <h1 className="font-bold text-base sm:text-xs lg:text-xl xl:text-2xl">Welcome Back, <span className="text-purple-500">{session?.user?.name}</span></h1>
                     <p className="text-gray-500 text-xs lg:text-sm xl:text-base">Here are you monthly store updates.</p>
                 </div>
             </div>

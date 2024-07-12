@@ -8,6 +8,7 @@ import { BsPeople, BsCart2, BsBarChartLine, BsBell, BsFileEarmarkRuled, BsInfoCi
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/store/store";
 import { toggleNav } from "@/store/slices/navSlice";
+import { logout } from "../../../actions/auth";
 
 export default function SideNav() {
 
@@ -85,10 +86,10 @@ export default function SideNav() {
                     </div>
                 </nav>
                 <div className="sm:pt-8 pt-2 ml-3 sm:ml-0 max-w-[351px]">
-                    <a href="/" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
+                    <div onClick={() => logout()} className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
                         <TbLogout2 className="mr-2" />
                         Log Out
-                    </a>
+                    </div>
                 </div>
                 <div className="flex justify-between mt-6 sm:hidden ml-3 sm:ml-0 mb-2 max-w-[351px]">
                     <input id="search" type="text" placeholder="Type here" className="h-[30px] border border-grey-50 rounded-md pl-2 min-w-40" /> <button className="bg-purple-500 text-white flex items-center justify-evenly w-24 h-7 rounded-md"><BsSearch />Search</button>

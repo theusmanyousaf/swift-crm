@@ -1,3 +1,8 @@
+import Image from "next/image";
+import Logo from '/public/assets/Company.svg'
+
+import { FcGoogle } from "react-icons/fc";
+import { LoginGithub } from "@/components/login/LoginGithub";
 
 export default function Home() {
   return (
@@ -10,8 +15,9 @@ export default function Home() {
         <body class="h-full">
         ```
       */}
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex h-screen flex-1 flex-col justify-center px-6 py-20 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <Image src={Logo} alt="Logo" className="mx-auto h-10 w-auto" />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign in to your account
           </h2>
@@ -30,7 +36,7 @@ export default function Home() {
                   type="email"
                   required
                   autoComplete="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -41,7 +47,7 @@ export default function Home() {
                   Password
                 </label>
                 <div className="text-sm">
-                  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                  <a href="#" className="font-semibold text-purple-600 hover:text-purple-500">
                     Forgot password?
                   </a>
                 </div>
@@ -53,7 +59,7 @@ export default function Home() {
                   type="password"
                   required
                   autoComplete="current-password"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -61,17 +67,28 @@ export default function Home() {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-purple-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Sign in
               </button>
             </div>
           </form>
+          
+          <div className="flex py-10 items-center">
+            <div className="flex-grow border-t-2 border-gray-200"></div>
+            <span className="flex-shrink mx-5">Or continue With</span>
+            <div className="flex-grow border-t-2 border-gray-200"></div>
+          </div>
+
+          <div className="flex items-center gap-4 font-medium">
+            <div className="flex items-center gap-2 w-full rounded-md border px-12 py-1.5 shadow-sm cursor-pointer"><FcGoogle className="h-7 w-7" /><button>Google</button></div>
+            <LoginGithub />
+          </div>
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{' '}
-            <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-              Start a 14 day free trial
+            <a href="#" className="font-semibold leading-6 text-purple-600 hover:text-purple-500">
+              Sign Up
             </a>
           </p>
         </div>
