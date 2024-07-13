@@ -4,6 +4,8 @@ import "../../styles/globals.css";
 import Footer from "@/components/footer/Footer";
 import SideNav from "@/components/sidenav/SideNav";
 import Providers from "@/store/Provider";
+import { FaUserSlash } from "react-icons/fa6";
+import { auth } from "@/auth"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,11 +14,20 @@ export const metadata: Metadata = {
     description: "Swift Customer Relationship Management Application",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const session = await auth()
+    
+    if (!session) return (
+        <div className="h-screen w-screen flex items-center justify-center text-5xl gap-4">
+            <FaUserSlash />
+            <div className="font-semibold">| Not Authenticated</div>
+        </div>
+    )
+
     return (
         <html lang="en">
             <body className={inter.className}>
