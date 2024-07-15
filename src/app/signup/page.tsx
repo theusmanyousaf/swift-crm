@@ -1,9 +1,35 @@
+'use client'
+
 import Image from "next/image";
+import Link from "next/link";
 import Logo from '/public/assets/Company.svg'
+import { useRouter } from "next/navigation";
+import { FormEvent, useState } from "react";
 import { LoginGoogle } from "@/components/loginGoogle/LoginGoogle";
 import { LoginGithub } from "@/components/loginGithub/LoginGithub";
 
 const SignUp = () => {
+    const router = useRouter()
+    const [data, setData] = useState({
+        name: '',
+        email: '',
+        password: ''
+    })
+
+    const registerUser = async (e: FormEvent) => {
+        e.preventDefault()
+        const response = await fetch('/api/signup', {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({data})
+        })
+
+        const userInfo = await response.json()
+        console.log(userInfo)
+        router.push('/')
+    }
     return (
         <>
             <div className="flex h-screen flex-1 flex-col justify-center px-6 py-20 lg:px-8">
@@ -15,7 +41,24 @@ const SignUp = () => {
                 </div>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form action="#" method="POST" className="space-y-6">
+                    <form action="#" method="POST" className="space-y-6" onSubmit={registerUser}>
+                        <div>
+                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                                Enter Name
+                            </label>
+                            <div className="mt-2">
+                                <input
+                                    id="name"
+                                    name="name"
+                                    type="name"
+                                    value={data.name}
+                                    required
+                                    onChange={(e)=>{setData({...data, name: e.target.value})}}
+                                    className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                />
+                            </div>
+                        </div>
+
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                                 Enter Email
@@ -25,8 +68,9 @@ const SignUp = () => {
                                     id="email"
                                     name="email"
                                     type="email"
+                                    value={data.email}
                                     required
-                                    autoComplete="email"
+                                    onChange={(e)=>{setData({...data, email: e.target.value})}}
                                     className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                             </div>
@@ -43,8 +87,9 @@ const SignUp = () => {
                                     id="password"
                                     name="password"
                                     type="password"
+                                    value={data.password}
                                     required
-                                    autoComplete="current-password"
+                                    onChange={(e)=>{setData({...data, password: e.target.value})}}
                                     className="block w-full rounded-md px-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                             </div>
@@ -73,9 +118,9 @@ const SignUp = () => {
 
                     <p className="mt-10 text-center text-sm text-gray-500">
                         Already a member?{' '}
-                        <a href="/" className="font-semibold leading-6 text-purple-600 hover:text-purple-500">
+                        <Link href="/" className="font-semibold leading-6 text-purple-600 hover:text-purple-500">
                             Sign In
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>

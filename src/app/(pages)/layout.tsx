@@ -20,7 +20,7 @@ export default async function RootLayout({
     children: React.ReactNode;
 }>) {
     const session = await auth()
-    
+
     if (!session) return (
         <div className="h-screen w-screen flex items-center justify-center text-5xl gap-4">
             <FaUserSlash />
@@ -29,18 +29,14 @@ export default async function RootLayout({
     )
 
     return (
-        <html lang="en">
-            <body className={inter.className}>
-                <Providers>
-                    <div className="sm:flex bg-no-repeat bg-gray-50 bg-custom-bg sm:px-[72px]">
-                        <SideNav />
-                        <div className="w-full pl-[43px] sm:pl-0">
-                            {children}
-                        </div>
-                    </div>
-                    <Footer />
-                </Providers>
-            </body>
-        </html>
+        <Providers>
+            <div className="sm:flex bg-no-repeat bg-gray-50 bg-custom-bg sm:px-[5%]">
+                <SideNav />
+                <div className="w-full pl-[43px] sm:pl-0">
+                    {children}
+                </div>
+            </div>
+            <Footer />
+        </Providers>
     );
 }
