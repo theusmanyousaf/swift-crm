@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Logo from '/public/assets/Company.svg'
+import Link from "next/link";
 import { LoginGoogle } from "@/components/loginGoogle/LoginGoogle";
 import { LoginGithub } from "@/components/loginGithub/LoginGithub";
 import { FormEvent, useState } from "react";
@@ -17,7 +18,7 @@ export default function Home() {
 
   const loginUser = async (e: FormEvent) => {
     e.preventDefault();
-    signIn('credentials', {
+    await signIn('credentials', {
       ...data,
       redirect: false
     });
@@ -60,9 +61,9 @@ export default function Home() {
                   Password
                 </label>
                 <div className="text-sm">
-                  <a href="/forgot-password" className="font-semibold text-purple-600 hover:text-purple-500">
+                  <Link href="/forgot-password" className="font-semibold text-purple-600 hover:text-purple-500">
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="mt-2">
@@ -102,9 +103,9 @@ export default function Home() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{' '}
-            <a href="/signup" className="font-semibold leading-6 text-purple-600 hover:text-purple-500">
+            <Link href="/signup" className="font-semibold leading-6 text-purple-600 hover:text-purple-500">
               Sign Up
-            </a>
+            </Link>
           </p>
         </div>
       </div>

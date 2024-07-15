@@ -1,6 +1,7 @@
 'use client'
 import Image from "next/image"
 import Logo from '/public/assets/Company.svg'
+import Link from "next/link";
 import { RxDashboard, RxCross1 } from "react-icons/rx";
 import { FiSettings, FiMenu } from "react-icons/fi";
 import { TbLogout2 } from "react-icons/tb";
@@ -24,7 +25,7 @@ export default function SideNav() {
         <div className="sm:mt-[22px] h-auto sm:h-[752px] sm:min-w-[220px] sm:max-w-[220px] bg-white shadow-xl rounded-md sm:px-4 sm:py-8">
             <div className="flex justify-between items-center py-2 sm:py-0 sm:px-0 px-11">
                 <div className="sm:mb-8 py-[5px] sm:py-0 pr-4 sm:pr-0 sm:px-4 sm:text-left">
-                    <a href="/dashboard"><Image src={Logo} alt="SwiftCRM" /></a>
+                    <Link href="/dashboard"><Image src={Logo} alt="SwiftCRM" /></Link>
                 </div>
                 <div className="sm:hidden block">
                     {
@@ -39,38 +40,38 @@ export default function SideNav() {
                     <div className="hidden sm:block py-2 text-xs text-gray-500 font-semibold mb-4">GENERAL</div>
                     <div className="flex flex-col sm:gap-4 gap-2">
                         <div>
-                            <a href="/dashboard" className="flex items-center py-2 px-4 bg-purple-100 text-purple-600 hover:text-purple-600 rounded-md">
+                            <Link href="/dashboard" className="flex items-center py-2 px-4 bg-purple-100 text-purple-600 hover:text-purple-600 rounded-md">
                                 <RxDashboard className="mr-2" />
                                 Dashboard
-                            </a>
+                            </Link>
                         </div>
                         <div className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md cursor-pointer">
                             <BsBell className="mr-2" />
                             Notifications
                         </div>
                         <div>
-                            <a href="/customers" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
+                            <Link href="/customers" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
                                 <BsPeople className="mr-2" />
                                 Customers
-                            </a>
+                            </Link>
                         </div>
                         <div>
-                            <a href="/order-overview" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
+                            <Link href="/order-overview" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
                                 <BsCart2 className="mr-2" />
                                 Order Overview
-                            </a>
+                            </Link>
                         </div>
                         <div>
-                            <a href="/analytics" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
+                            <Link href="/analytics" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
                                 <BsBarChartLine className="mr-2" />
                                 Analytics
-                            </a>
+                            </Link>
                         </div>
                         <div>
-                            <a href="/documents" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
+                            <Link href="/documents" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
                                 <BsFileEarmarkRuled className="mr-2" />
                                 Documents
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="hidden sm:block py-2 text-xs text-gray-500 font-semibold mb-4 mt-8">SUPPORT</div>

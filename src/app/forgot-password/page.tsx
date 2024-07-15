@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Logo from '/public/assets/Company.svg'
+import Link from "next/link";
 
 export default function ForgotPassword() {
     return (
@@ -39,9 +40,9 @@ export default function ForgotPassword() {
 
                     <p className="mt-10 text-center text-sm text-gray-500">
                         Not a member?{' '}
-                        <a href="/signup" className="font-semibold leading-6 text-purple-600 hover:text-purple-500">
+                        <Link href="/signup" className="font-semibold leading-6 text-purple-600 hover:text-purple-500">
                             Sign Up
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>
