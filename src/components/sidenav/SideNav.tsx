@@ -9,7 +9,7 @@ import { BsPeople, BsCart2, BsBarChartLine, BsBell, BsFileEarmarkRuled, BsInfoCi
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/store/store";
 import { toggleNav } from "@/store/slices/navSlice";
-import { logout } from "../../../actions/auth";
+import { logout } from "../../../actions/actions";
 
 export default function SideNav() {
 

@@ -1,6 +1,6 @@
 "use client"
 import { BsGithub } from "react-icons/bs";
-import { login } from "../../../actions/auth";
+import { login } from "../../../actions/actions";
 
 export const LoginGithub = () => {
   return (

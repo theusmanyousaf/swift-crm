@@ -1,4 +1,4 @@
-import { auth } from "@/auth"
+import { auth } from "../../app/api/auth/[...nextauth]/route"
 import Avatar from "/public/assets/avatar.png"
 import Image from "next/image"
 import { BsSearch } from "react-icons/bs"
