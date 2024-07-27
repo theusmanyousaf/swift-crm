@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Swift CRM",
-  description: "Swift Customer Relationship Management Application",
+  description: "A Swift Customer Relationship Management Application",
 };
 
 export default async function RootLayout({

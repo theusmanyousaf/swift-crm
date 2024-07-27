@@ -1,6 +1,6 @@
 "use client"
 import { FcGoogle } from "react-icons/fc";
-import { login } from "../../../actions/actions";
+import { login } from "../../../actions/auth";
 
 export const LoginGoogle = () => {
   return (

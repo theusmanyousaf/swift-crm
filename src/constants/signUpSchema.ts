@@ -5,7 +5,7 @@ export const SignUpValidationSchema = z.object({
         .string({required_error: "Name is required"})
         .min(3, "Name must be atleast 3 characters")
         .max(35, "Name cannot be more then 35 characters")
-        .regex(new RegExp("^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$"), "No special characters allowed!"),
+        .regex(new RegExp("^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$"), "No special characters or numbers allowed!"),
     email: z
         .string({required_error: "Email is required"})
         .email("Plese Enter a valid email address")

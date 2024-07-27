@@ -1,13 +1,25 @@
 import Image from "next/image";
 import Logo from '/public/assets/Company.svg'
+import { auth } from "@/auth";
 import Link from "next/link";
 
-export default function ForgotPassword() {
+export default async function ForgotPassword() {
+    const session = await auth();
+
+    if (session) {
+        return (
+            <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", margin: "40px auto 0" }}>
+                <h1 style={{ color: "red" }}>Cannot access the contents of this page</h1>
+                <h3><span style={{ color: "skyblue" }}>{session.user?.name}</span> is logged in go to <Link href="/dashboard"><button style={{ border: "1px solid skyblue", padding: "6px 10px", borderRadius: "4px", fontWeight: "bold", backgroundColor: "white", cursor: "pointer" }}>Dashboard</button></Link></h3>
+            </div>
+        )
+    }
+
     return (
         <>
             <div className="flex h-screen flex-1 flex-col justify-center px-6 py-20 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                    <Image src={Logo} alt="Logo" className="mx-auto h-14 w-auto" />
+                    <Link href='/'><Image src={Logo} alt="Logo" className="mx-auto h-14 w-auto" /></Link>
                 </div>
 
                 <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -31,7 +43,7 @@ export default function ForgotPassword() {
                         <div>
                             <button
                                 type="submit"
-                                className="flex w-full justify-center rounded-md bg-purple-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                className="flex w-full justify-center rounded-md bg-violet-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-violet-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
                                 Send
                             </button>
@@ -40,7 +52,7 @@ export default function ForgotPassword() {
 
                     <p className="mt-10 text-center text-sm text-gray-500">
                         Not a member?{' '}
-                        <Link href="/signup" className="font-semibold leading-6 text-purple-600 hover:text-purple-500">
+                        <Link href="/auth/signup" className="font-semibold leading-6 text-purple-600 hover:text-purple-500">
                             Sign Up
                         </Link>
                     </p>
