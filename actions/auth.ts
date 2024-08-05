@@ -12,10 +12,6 @@ export async function registerUser(user: Omit<User, "id" | "emailVerified" | "im
             ...user,
             password: await bcrypt.hash(user.password as string, 10)
         }
-        // {
-        //     ...user,
-        //     password: bcrypt.hash(user.password as string, 10),
-        // }
     })
 }
 

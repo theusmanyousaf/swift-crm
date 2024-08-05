@@ -4,6 +4,6 @@ import { login } from "../../../actions/auth";
 
 export const LoginGithub = () => {
   return (
-    <div onClick={()=> login("github")} className="flex items-center gap-2 w-full rounded-md border px-12 py-1.5 shadow-sm cursor-pointer"><BsGithub className="h-7 w-7" /><button>GitHub</button></div>
+    <div onClick={()=> login("github")} className="flex justify-center items-center gap-2 w-full rounded-md border sm:px-12 py-1.5 shadow-sm cursor-pointer"><BsGithub className="h-7 w-7" /><button>GitHub</button></div>
   )
 }

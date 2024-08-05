@@ -34,13 +34,13 @@ export default function SignUpForm() {
             console.log(result)
             router.push("/auth/signin")
         } catch (error) {
-            alert("Something went wrong!")
+            alert("A user with given email address already exists\nTry using a different email address.")
             console.log(error)
         }
     }
 
     return (
-        <form action="#" method="POST" className="space-y-6" onSubmit={handleSubmit(saveUser)}>
+        <form className={errors.name?.message?"space-y-2":"space-y-6"} onSubmit={handleSubmit(saveUser)}>
             <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                     Enter Name

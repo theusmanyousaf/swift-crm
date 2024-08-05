@@ -23,15 +23,16 @@ export default async function SignUp() {
             <div className="flex h-screen flex-1 flex-col justify-center px-6 py-20 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <Link href='/'><Image src={Logo} alt="Logo" className="mx-auto h-12 w-auto" /></Link>
-                    <h2 className="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                    <h2 className="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                         Create your account
                     </h2>
                 </div>
 
-                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
+                    {/* signup form */}
                     <SignUpForm />
 
-                    <div className="flex py-10 items-center">
+                    <div className="flex py-8 items-center">
                         <div className="flex-grow border-t-2 border-gray-200"></div>
                         <span className="flex-shrink mx-5">Or continue With</span>
                         <div className="flex-grow border-t-2 border-gray-200"></div>
@@ -42,7 +43,7 @@ export default async function SignUp() {
                         <LoginGithub />
                     </div>
 
-                    <p className="mt-10 text-center text-sm text-gray-500">
+                    <p className="mt-4 text-center text-sm text-gray-500">
                         Already a member?{' '}
                         <Link href="/auth/signin" className="font-semibold leading-6 text-purple-600 hover:text-purple-500">
                             Sign In

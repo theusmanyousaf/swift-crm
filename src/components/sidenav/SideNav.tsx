@@ -34,8 +34,8 @@ export default function SideNav() {
                             : <button onClick={handleMenuClick} className="flex bg-purple-600 w-14 h-10 items-center justify-center rounded-md"><FiMenu className="text-white text-3xl" /></button>
                     }
                 </div>
-           </div>
-            <div className={`absolute sm:static z-[10] bg-white w-full sm:w-auto sm:opacity-100 sm:top-auto ${menuOpen ? "opacity-100"  : "top-[-1000px] opacity-0"}`}>
+            </div>
+            <div className={`absolute sm:static z-[10] bg-white w-full sm:w-auto sm:opacity-100 sm:top-auto ${menuOpen ? "opacity-100" : "top-[-1000px] opacity-0"}`}>
                 <nav className="ml-3 sm:ml-0 max-w-[351px]">
                     <div className="hidden sm:block py-2 text-xs text-gray-500 font-semibold mb-4">GENERAL</div>
                     <div className="flex flex-col sm:gap-4 gap-2">
@@ -45,9 +45,11 @@ export default function SideNav() {
                                 Dashboard
                             </Link>
                         </div>
-                        <div className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md cursor-pointer">
-                            <BsBell className="mr-2" />
-                            Notifications
+                        <div>
+                            <Link href="/notifications" className="flex items-center py-2 px-4 bg-purple-100 text-purple-600 hover:text-purple-600 rounded-md">
+                                <BsBell className="mr-2" />
+                                Notifications
+                            </Link>
                         </div>
                         <div>
                             <Link href="/customers" className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md">
