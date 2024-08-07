@@ -1,9 +1,38 @@
-import Image from 'next/image'
-import Graph from '/public/assets/GraphOverall.png'
+"use client"
 
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
+import {
+    ChartConfig,
+    ChartContainer,
+    ChartTooltip,
+    ChartTooltipContent,
+} from "@/components/ui/chart"
+
+const chartData = [
+    { date: "1 Jul", Last: 3008, Current: 3741 },
+    { date: "2 Jul", Last: 5691, Current: 6592 },
+    { date: "3 Jul", Last: 8159, Current: 9678 },
+    { date: "4 Jul", Last: 11225, Current: 13467 },
+    { date: "5 Jul", Last: 14678, Current: 16890 },
+    { date: "6 Jul", Last: 17569, Current: 20258 },
+    { date: "7 Jul", Last: 20080, Current: 23845 },
+]
+
+let xAxisTicks = chartData.map(value => value.date).slice(0, 7)
+
+const chartConfig = {
+    last: {
+        label: "Last Week",
+        color: "#41A5FF",
+    },
+    current: {
+        label: "Current Week",
+        color: "#9A55FF",
+    },
+} satisfies ChartConfig
 export default function OverallSales() {
     return (
-        <div className='flex flex-col gap-3 bg-white border rounded-lg pt-6 pb-12 px-4'>
+        <div className='flex flex-col gap-3 bg-white border rounded-lg pt-6 pb-12 px-4 w-full'>
             <h1 className='font-semibold'>Overall Sales</h1>
             <div className='flex justify-between'>
                 <div className='flex gap-2 items-center'>
@@ -22,7 +51,61 @@ export default function OverallSales() {
                 </div>
             </div>
             <hr />
-            <Image src={Graph} alt='graph'/>
+            <OverallSalesGraph />
+
         </div>
+    )
+}
+
+function OverallSalesGraph() {
+    return (
+        <ChartContainer config={chartConfig} className='w-full h-[228px] overflow-hidden'>
+            <LineChart data={chartData}>
+                <CartesianGrid />
+                <XAxis
+                    dataKey="date"
+                    axisLine={false}
+                    tickLine={false}
+                    ticks={xAxisTicks}
+                    allowDataOverflow={true}
+                />
+                <YAxis
+                    tickFormatter={(value) => value !== 0 ? value / 1000 + "K" : value}
+                    ticks={[0, 5000, 10000, 15000, 20000]}
+                    domain={[0, 20000]}
+                    interval="preserveStart"
+                    allowDataOverflow={false}
+                    axisLine={false}
+                    tickLine={false}
+                />
+                <ChartTooltip
+                    content={<ChartTooltipContent
+                        hideIndicator={true}
+                        nameKey=""
+                        className="w-[150px]"
+                    />}
+                />
+                <Line
+                    dataKey="Current"
+                    type="linear"
+                    stroke={chartConfig.last.color}
+                    strokeWidth={4}
+                    dot={{
+                        fill: chartConfig.last.color,
+                        r: 3
+                    }}
+                />
+                <Line
+                    dataKey="Last"
+                    type="linear"
+                    stroke={chartConfig.current.color}
+                    strokeWidth={4}
+                    dot={{
+                        fill: chartConfig.current.color,
+                        r: 3
+                    }}
+                />
+            </LineChart>
+        </ChartContainer>
     )
 }
