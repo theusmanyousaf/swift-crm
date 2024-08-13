@@ -30,7 +30,7 @@ export default async function RootLayout({
             <div className="bg-gray-50">
                 <div className="sm:flex bg-custom-bg bg-no-repeat sm:px-[5%]">
                     <SideNav />
-                    <div className="w-full pl-[43px] sm:pl-0">
+                    <div className="w-full sm:pl-[43px] pl-0">
                         {children}
                     </div>
                 </div>

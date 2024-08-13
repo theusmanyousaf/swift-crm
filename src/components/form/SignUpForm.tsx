@@ -5,7 +5,7 @@ import { useState } from "react";
 import { z } from 'zod'
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SignUpValidationSchema } from "@/constants/signUpSchema";
+import { SignUpValidationSchema } from "@/constants/formSchema";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { registerUser } from "../../../actions/auth";
 
@@ -14,7 +14,7 @@ type InputType = z.infer<typeof SignUpValidationSchema>
 export default function SignUpForm() {
 
     const router = useRouter()
-    const { register, handleSubmit, reset, formState: { errors } } = useForm<InputType>({
+    const { register, handleSubmit, formState: { errors } } = useForm<InputType>({
         resolver: zodResolver(SignUpValidationSchema)
     })
     const [isvisible, setIsVisible] = useState(false)
@@ -26,16 +26,13 @@ export default function SignUpForm() {
     })
 
     const saveUser: SubmitHandler<InputType> = async (data) => {
-        console.log({ data })
         const user = data
         try {
             const result = await registerUser(user)
             alert("User Registerd Successfully")
-            console.log(result)
             router.push("/auth/signin")
         } catch (error) {
             alert("A user with given email address already exists\nTry using a different email address.")
-            console.log(error)
         }
     }
 
