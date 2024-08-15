@@ -7,7 +7,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   prefix: "",
   theme: {
     container: {
@@ -18,6 +18,11 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        // Set Barlow as the default sans-serif font
+        sans: ['var(--font-barlow)', 'sans-serif'],
+        'albert-sans': ['var(--font-albert-sans)', 'sans-serif'],
+      },
       backgroundImage: {
         'custom-bg': "url('/assets/Topology.png')",
       },

@@ -168,26 +168,26 @@ const CustomerList = () => {
 
 
     return (
-        <div className="py-8 mb-[100px] w-full">
-            <div className='flex gap-6 items-center justify-around p-2 min-w-full text-sm font-semibold'>
+        <div className="py-8 mb-[100px] overflow-x-scroll">
+            <div className='flex xl:gap-x-6 gap-x-5 items-center justify-around p-2 font-semibold min-w-[842px] xl:h-[47px] h-[39px] xl:text-sm text-xs '>
                 <input type="checkbox" />
-                <div className='flex-1 py-[5.5px] xl:min-w-60'>Customer Name</div>
-                <div className='flex-1 py-[5.5px]'>Email</div>
-                <div className='flex-1 py-[5.5px]'>Phone</div>
-                <div className='flex-1 py-[5.5px]'>address</div>
-                <div className='py-[5.5px] pr-10'>Status</div>
+                <div className='flex-1 py-[5.5px] xl:min-w-60 min-w-[198px]'>Customer Name</div>
+                <div className='flex-1 py-[5.5px]  xl:min-w-[177px] min-w-[147px]'>Email</div>
+                <div className='flex-1 py-[5.5px]  xl:min-w-[170px] min-w-[141px]'>Phone</div>
+                <div className='flex-1 py-[5.5px]  xl:min-w-[170px] min-w-[141px]'>address</div>
+                <div className='py-[5.5px] pr-10 xl:min-w-[107px] min-w-[89px]'>Status</div>
             </div>
             {currentCustomers.map((customer) => (
-                <div key={customer.phone} className='flex gap-x-6 my-3 items-center justify-between p-2 rounded-lg text-gray-500'>
+                <div key={customer.phone} className='flex gap-x-6 my-3 p-2 items-center bg-white rounded-md border text-gray-500 min-w-[842px] xl:text-sm text-xs font-medium xl:h-[47px] h-[39px]'>
                     <input type="checkbox" />
-                    <div className='flex items-center w-full xl:min-w-60'>
+                    <div className='flex items-center w-full xl:min-w-60 min-w-[198px]'>
                         <Image src={customer.imageUrl} alt={customer.name} className="w-[31px] h-[31px] rounded-full mr-2" />
                         {customer.name}
                     </div>
-                    <div className='w-full'>{customer.email}</div>
-                    <div className='w-full'>{customer.phone}</div>
-                    <div className='w-full'>{customer.address}</div>
-                    <div className='flex-1 pr-9'>
+                    <div className='w-full xl:min-w-[177px] min-w-[147px]'>{customer.email}</div>
+                    <div className='w-full xl:min-w-[170px] min-w-[141px]'>{customer.phone}</div>
+                    <div className='w-full xl:min-w-[170px] min-w-[141px]'>{customer.address}</div>
+                    <div className='w-full flex-1 pr-9 xl:min-w-[107px] min-w-[89px] xl:text-xs lg:text-[10px] font-medium'>
                         <span className={`px-2 py-1 rounded-full text-xs font-bold ${customer.status === 'Online' ? 'bg-lime-100 text-lime-600' : 'bg-gray-100 text-gray-600'}`}>
                             {customer.status}
                         </span>
@@ -195,7 +195,7 @@ const CustomerList = () => {
                 </div>
             ))}
 
-            <div className='flex justify-between items-center'>
+            <div className='flex md:flex-row flex-col justify-between items-center gap-4'>
                 <div className='font-semibold text-[15px]'>
                     Showing <span><select
                         className="py-2 px-1 rounded bg-purple-500 text-white focus:outline-none"

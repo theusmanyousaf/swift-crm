@@ -7,7 +7,7 @@ import Header from '@/components/header/Header'
 export default function Customers() {
 
   return (
-    <div className='ml-[41px]'>
+    <div className='lg:ml-[41px] ml-11'>
       <Header title='Customers'/>
       <CustomerSummary />
       <DeviceUsers />

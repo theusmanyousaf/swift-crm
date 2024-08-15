@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
+import { Albert_Sans, Barlow } from 'next/font/google'
 
-const inter = Inter({ subsets: ["latin"] });
+const albertSans = Albert_Sans({
+  subsets: ['latin'], // Specify the subset if needed
+  variable: '--font-albert-sans', // Optional: define a CSS variable for the font
+})
+
+const barlow = Barlow({
+  subsets: ['latin'],
+  variable: '--font-barlow',
+  weight: "400"
+})
 
 export const metadata: Metadata = {
   title: "Swift CRM",
@@ -20,7 +29,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <SessionProvider session={session}>
-        <body className={inter.className}>
+        <body  className={`${albertSans.variable} ${barlow.variable} bg-gray-50`}>
           {children}
         </body>
       </SessionProvider>

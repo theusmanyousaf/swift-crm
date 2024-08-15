@@ -27,15 +27,13 @@ export default async function RootLayout({
 
     return (
         <Providers>
-            <div className="bg-gray-50">
-                <div className="sm:flex bg-custom-bg bg-no-repeat sm:px-[5%]">
-                    <SideNav />
-                    <div className="w-full sm:pl-[43px] pl-0">
-                        {children}
-                    </div>
+            <div className="sm:flex bg-custom-bg bg-no-repeat xl:px-[5%] md:px-[3.266%]">
+                <SideNav />
+                <div className="w-full">
+                    {children}
                 </div>
-                <Footer />
             </div>
+            <Footer />
         </Providers>
     );
 }

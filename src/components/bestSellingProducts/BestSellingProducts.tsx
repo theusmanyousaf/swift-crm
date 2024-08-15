@@ -7,7 +7,7 @@ export default function BestSellingProducts() {
     const pathname = usePathname()
     return (
         pathname == '/dashboard'
-            ? <div className='flex flex-col gap-y-3 p-4 bg-white w-full border rounded-lg pt-5'>
+            ? <div className='flex flex-col gap-y-3 p-4 bg-white border rounded-lg pt-5 mt-5 md:mt-0 mx-11 sm:mx-0'>
                 <h1 className='font-semibold'>Best Selling Products</h1>
                 <hr />
                 {products.map((product, index) => (

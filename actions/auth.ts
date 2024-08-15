@@ -32,7 +32,7 @@ export const fetchUser = async () => {
     }
 }
 
-export const updateUser = async (user: Omit<User, "id" | "emailVerified" | "password" | "createdAt" | "updatedAt">) => {
+export const updateUser = async (user: Omit<User, "id" | "emailVerified" | "createdAt" | "updatedAt">) => {
     const session = await auth();
     const loggedInUser = session?.user?.email
     try {

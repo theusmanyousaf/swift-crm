@@ -27,7 +27,7 @@ export default function SideNav() {
     };
 
     return (
-        <div className="sm:mt-[22px] h-auto sm:h-[752px] sm:min-w-[220px] sm:max-w-[220px] bg-white shadow-xl rounded-md sm:px-4 sm:py-8 mb-5">
+        <div className="xl:mt-[22px] lg:mt-[21px] h-auto sm:h-[752px] sm:min-w-[220px] sm:max-w-[220px] bg-white sm:shadow-xl rounded-md sm:px-4 sm:py-8 mb-5">
             <div className="flex justify-between items-center py-2 sm:py-0 sm:px-0 px-11">
                 <div className="sm:mb-8 py-[5px] sm:py-0 pr-4 sm:pr-0 sm:px-4 sm:text-left">
                     <Link href="/dashboard"><Image src={Logo} alt="SwiftCRM" /></Link>
@@ -42,7 +42,7 @@ export default function SideNav() {
             </div>
             <div className={`absolute sm:static z-[10] bg-white w-full sm:w-auto sm:opacity-100 sm:top-auto ${menuOpen ? "opacity-100" : "top-[-1000px] opacity-0"}`}>
                 <nav className="ml-3 sm:ml-0 max-w-[351px]">
-                    <div className="hidden sm:block py-2 text-xs text-gray-500 font-semibold mb-4">GENERAL</div>
+                    <div className="hidden sm:block py-2 text-xs text-gray-500 font-albert-sans font-bold mb-4">GENERAL</div>
                     <div className="flex flex-col sm:gap-4 gap-2">
                         <div>
                             <Link href="/dashboard">
@@ -111,7 +111,7 @@ export default function SideNav() {
                             </Link>
                         </div>
                     </div>
-                    <div className="hidden sm:block py-2 text-xs text-gray-500 font-semibold mb-4 mt-8">SUPPORT</div>
+                    <div className="hidden sm:block py-2 text-xs text-gray-500 font-albert-sans font-bold mb-4 mt-8">SUPPORT</div>
                     <div className="flex flex-col sm:gap-4 gap-2">
                         <div>
                             <Link href="/help">

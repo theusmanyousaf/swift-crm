@@ -4,7 +4,7 @@ import DatePickerWithRange from '../datePickerWithRange/DatePickerWithRange'
 
 export default function Header({title}:{title: string}) {
     return (
-        <div className="flex justify-between mt-10 items-center mb-3.5">
+        <div className="flex md:flex-row flex-col-reverse justify-between mt-10 md:items-center mb-3.5">
             <h1 className="font-bold text-[32px]">{title}</h1>
             <div className='flex items-center gap-4'>
                 <DatePickerWithRange />
