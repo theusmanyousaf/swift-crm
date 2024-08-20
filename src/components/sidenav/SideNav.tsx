@@ -27,7 +27,7 @@ export default function SideNav() {
     };
 
     return (
-        <div className="xl:mt-[22px] lg:mt-[21px] h-auto sm:h-[752px] sm:min-w-[220px] sm:max-w-[220px] bg-white sm:shadow-xl rounded-md sm:px-4 sm:py-8 mb-5">
+        <div className="xl:mt-[22px] sm:ml-4 md:ml-0 sm:mt-[21px] h-auto sm:h-[752px] sm:min-w-[220px] sm:max-w-[220px] bg-white sm:shadow-md rounded-md sm:px-4 sm:py-8 mb-5">
             <div className="flex justify-between items-center py-2 sm:py-0 sm:px-0 px-11">
                 <div className="sm:mb-8 py-[5px] sm:py-0 pr-4 sm:pr-0 sm:px-4 sm:text-left">
                     <Link href="/dashboard"><Image src={Logo} alt="SwiftCRM" /></Link>

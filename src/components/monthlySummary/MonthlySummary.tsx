@@ -5,7 +5,7 @@ import MonthlyNewCustomers from "../monthlyNewCustomers/MonthlyNewCustomers";
 export default function MonthlySummary() {
     
     return (
-        <div className="flex gap-5 xl:h-60 sm:h-[196px] overflow-scroll ml-[43px] sm:ml-0">
+        <div className="flex xl:gap-5 gap-[17px] xl:h-60 sm:h-[196px] overflow-x-auto ml-[10.28%] md:ml-0">
             <MonthlyTotalProfit />
             <MonthlyTotalExpenses />
             <MonthlyNewCustomers />

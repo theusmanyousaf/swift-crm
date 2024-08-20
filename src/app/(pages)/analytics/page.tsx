@@ -8,17 +8,17 @@ import Visitors from '@/components/visitors/Visitors'
 
 export default function Analytics() {
   return (
-    <div className='xl:ml-[29px]'>
+    <div className='md:ml-[29px] mx-[10.28%] md:mx-0'>
       <Header title='Analytics' />
-      <div className='xl:mt-[62px] flex gap-6'>
+      <div className='xl:mt-[62px] flex lg:flex-row flex-col gap-6'>
         <OverallSales />
         <Visitors />
       </div>
-      <div className='flex gap-5 my-6'>
+      <div className='flex lg:flex-row flex-col gap-5 my-6'>
         <SourcesOfPurchase />
         <SalesPerWeek />
       </div>
-      <div className='flex gap-6 mb-16'>
+      <div className='flex lg:flex-row flex-col gap-6 mb-16'>
         <SalesPerCountry />
         <SalesHistory />
       </div>

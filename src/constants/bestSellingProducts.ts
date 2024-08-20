@@ -11,9 +11,49 @@ type productsType = {
     category: string
     status: string
     price: number
-    quantity: number
+    orderQuantity?: number
+    totalQuantity?: number
 }
 
+
+export const productsOrder: productsType[] = [
+    {
+        date: 'July 2, 2023',
+        image: CBowl,
+        title: 'Ceramic Bowl',
+        category: 'Home Goods',
+        status: 'Available',
+        price: 29,
+        orderQuantity: 200
+    },
+    {
+        date: 'July 4, 2023',
+        image: Mug,
+        title: 'Ceramic Mug',
+        category: 'Potterific',
+        status: 'Available',
+        price: 59,
+        orderQuantity: 184
+    },
+    {
+        date: 'July 3, 2023',
+        image: Vase,
+        title: 'Vase',
+        category: 'Flower Child',
+        status: 'Out of Stock',
+        price: 99,
+        orderQuantity: 155
+    },
+    {
+        date: 'July 5, 2023',
+        image: WBowl,
+        title: 'Wooden Bowl',
+        category: 'Wood Co.',
+        status: 'Available',
+        price: 30,
+        orderQuantity: 120
+    }
+]
 
 export const products: productsType[] = [
     {
@@ -23,7 +63,7 @@ export const products: productsType[] = [
         category: 'Home Goods',
         status: 'Available',
         price: 29,
-        quantity: 200
+        totalQuantity: 20000
     },
     {
         date: 'July 4, 2023',
@@ -32,7 +72,7 @@ export const products: productsType[] = [
         category: 'Potterific',
         status: 'Available',
         price: 59,
-        quantity: 184
+        totalQuantity: 18400
     },
     {
         date: 'July 3, 2023',
@@ -41,7 +81,7 @@ export const products: productsType[] = [
         category: 'Flower Child',
         status: 'Out of Stock',
         price: 99,
-        quantity: 155
+        totalQuantity: 0
     },
     {
         date: 'July 5, 2023',
@@ -50,6 +90,6 @@ export const products: productsType[] = [
         category: 'Wood Co.',
         status: 'Available',
         price: 30,
-        quantity: 120
+        totalQuantity: 12000
     }
 ]

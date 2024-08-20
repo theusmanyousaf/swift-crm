@@ -10,13 +10,13 @@ import {
 
 const chartData = [
     { date: "", Sales: 0, Revenue: 0, Views: 0 },
-    { date: "1 Jul", Sales: 2037, Revenue: 3008, Views: 3741 },
-    { date: "2 Jul", Sales: 4088, Revenue: 5691, Views: 6592 },
-    { date: "3 Jul", Sales: 6145, Revenue: 8159, Views: 9679 },
-    { date: "4 Jul", Sales: 8554, Revenue: 11225, Views: 13467 },
-    { date: "5 Jul", Sales: 11247, Revenue: 14678, Views: 16890 },
-    { date: "6 Jul", Sales: 14053, Revenue: 17569, Views: 20258 },
-    { date: "7 Jul", Sales: 16590, Revenue: 20080, Views: 22845 },
+    { date: "1 Jul 2024", Sales: 2037, Revenue: 3008, Views: 3741 },
+    { date: "2 Jul 2024", Sales: 4088, Revenue: 5691, Views: 6592 },
+    { date: "3 Jul 2024", Sales: 6145, Revenue: 8159, Views: 9679 },
+    { date: "4 Jul 2024", Sales: 8554, Revenue: 11225, Views: 13467 },
+    { date: "5 Jul 2024", Sales: 11247, Revenue: 14678, Views: 16890 },
+    { date: "6 Jul 2024", Sales: 14053, Revenue: 17569, Views: 20258 },
+    { date: "7 Jul 2024", Sales: 16590, Revenue: 20080, Views: 22845 },
 ]
 
 let xAxisTicks = chartData.map(value => value.date).slice(1, 8)
@@ -71,6 +71,12 @@ function SalesStatisticsGraph() {
                     dataKey="date"
                     axisLine={false}
                     tickLine={false}
+                    tickFormatter={(value) => {
+                        return new Date(value).toLocaleDateString("en-US", {
+                            day: "numeric",
+                            month: "short"
+                        })
+                    }}
                     ticks={xAxisTicks}
                     interval={0}
                     padding={{ right: 60 }}

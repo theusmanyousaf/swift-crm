@@ -36,8 +36,4 @@ export const UpdateProfileFormSchema = z.object({
         .string({ required_error: "Email is required" })
         .email("Plese Enter a valid email address")
         .max(255, "Email cannot be more then 255 characters"),
-    password: z
-        .string({ required_error: "Please Enter Your Password" })
-        .min(6, "Password must be at least 6 characters long"),
-    image: z.string()
 })

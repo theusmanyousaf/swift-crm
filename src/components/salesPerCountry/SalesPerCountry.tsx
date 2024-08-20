@@ -1,4 +1,5 @@
 "use client"
+import useScreenWidth from "@/hooks/useScreenWidth"
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
 import {
     ChartConfig,
@@ -6,6 +7,7 @@ import {
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart"
+
 const chartData = [
     { country: "United States", sales: 3250 },
     { country: "France", sales: 1800 },
@@ -22,18 +24,21 @@ const chartConfig = {
 
 export default function SalesPerCountry() {
     return (
-        <div className='flex flex-col gap-3 bg-white border rounded-lg py-6 px-4 w-full'>
-            <h1 className='font-semibold'>Sales Per Country <span className='font-semibold text-gray-300'>(9,234 Sales)</span></h1>
-            <hr />
-            {/* <Image src={Graph} alt='graph' /> */}
+        <div className='flex flex-col md:gap-3 gap-[10px] bg-white border rounded-lg lg:py-6 pt-[19.92px] lg:px-4 w-full'>
+            <h1 className='font-semibold lg:px-0 px-[13px] lg:text-base text-[13.28px]'>Sales Per Country <span className='font-semibold text-gray-300'>(9,234 Sales)</span></h1>
+            <hr className="lg:mx-0 mx-[13px]" />
             <SalesPerCountryGraph />
         </div>
     )
 }
 
+
 function SalesPerCountryGraph() {
+
+    const isDesktop = useScreenWidth(767)
+
     return (
-        <ChartContainer config={chartConfig} className="h-[228px]">
+        <ChartContainer config={chartConfig} className="md:h-[228px] h-36 md:-ml-0 -ml-5 pr-[13px] lg:pr-0 w-full">
             <BarChart
                 accessibilityLayer
                 data={chartData}
@@ -47,18 +52,23 @@ function SalesPerCountryGraph() {
                     domain={[0, 4500]}
                     axisLine={false}
                     tickLine={false}
+                    interval={0}
+                    padding={isDesktop?{right:50}:{right:20}}
+                    className="sm:text-base text-[6.8px]"
                 />
                 <YAxis
                     dataKey="country"
                     type="category"
                     tickLine={false}
                     axisLine={false}
+                    interval={0}
+                    className="sm:text-base text-[6.8px]"
                 />
                 <ChartTooltip
                     cursor={false}
                     content={<ChartTooltipContent hideLabel />}
                 />
-                <Bar dataKey="sales" fill="var(--color-sales)" radius={1} barSize={20} className="opacity-50 hover:opacity-100" />
+                <Bar dataKey="sales" fill="var(--color-sales)" radius={1} barSize={isDesktop ? 20 : 10} className="opacity-50 hover:opacity-100 h-[10px] md:h-auto" />
             </BarChart>
         </ChartContainer>
     )

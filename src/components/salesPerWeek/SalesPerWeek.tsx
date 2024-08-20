@@ -8,10 +8,10 @@ export default function SalesPerWeek() {
             <hr />
             <Image src={Graph} alt='graph' />
             <hr />
-            <div className='flex gap-3'>
+            <div className='flex md:flex-row flex-col md:gap-3 gap-2'>
                 <h1 className='font-semibold texts w-[100px]'>Orders: </h1>
 
-                <div className='flex gap-8'>
+                <div className='flex lg:gap-8 gap-[10px]'>
                     <div className="flex items-center">
                         <div className="rounded-full w-2.5 h-2.5 bg-purple-200 mr-2" />
                         <span className='text-gray-500 text-xs font-semibold'>0-500</span>

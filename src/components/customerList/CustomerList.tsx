@@ -168,7 +168,7 @@ const CustomerList = () => {
 
 
     return (
-        <div className="py-8 mb-[100px] overflow-x-scroll">
+        <div className="py-8 mb-[100px] overflow-x-auto">
             <div className='flex xl:gap-x-6 gap-x-5 items-center justify-around p-2 font-semibold min-w-[842px] xl:h-[47px] h-[39px] xl:text-sm text-xs '>
                 <input type="checkbox" />
                 <div className='flex-1 py-[5.5px] xl:min-w-60 min-w-[198px]'>Customer Name</div>

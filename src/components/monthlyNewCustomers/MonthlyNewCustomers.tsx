@@ -36,13 +36,13 @@ const data = {
 
 export default function MonthlyNewCustomers() {
     return (
-        <div className="px-4 py-6 border rounded-lg bg-white w-full">
-            <div className="flex bg-purple-500 rounded-full items-center justify-center h-7 w-7 mb-3">
-                <data.icon className="text-white" />
+        <div className="xl:px-4 px-[13px] xl:py-6 py-[19px] border rounded-lg bg-white w-full min-w-[190.6px]">
+            <div className="flex bg-purple-500 rounded-full items-center justify-center h-7 w-7 xl:mb-3 mb-[10px]">
+                <data.icon className="text-white" size={12}/>
             </div>
-            <h1 className="text-gray-500 font-semibold text-[15px] h-[25px] mb-3">{data.title}</h1>
-            <div className="flex items-center justify-between w-full mb-3">
-                <h1 className="text-2xl max-h-[25px] font-bold">{data.amount}</h1>
+            <h1 className="text-gray-500 font-semibold text-[15px] xl:max-h-[25px] max-h-[21px] xl:mb-3 mb-[10px]">{data.title}</h1>
+            <div className="flex items-center justify-between w-full xl:mb-3 mb-[10px]">
+                <h1 className="xl:text-2xl text-xl xl:max-h-[25px] max-h-[21px] font-bold">{data.amount}</h1>
                 <button className={`rounded-full text-[10.5px] ${data.color} px-2`}>{data.change}</button>
             </div>
             <CustomersGraph />
@@ -53,7 +53,7 @@ export default function MonthlyNewCustomers() {
 
 function CustomersGraph() {
     return (
-        <ChartContainer config={chartConfig} className='w-full h-[77px]'>
+        <ChartContainer config={chartConfig} className='w-full xl:h-[77px] h-[62.5px]'>
             <LineChart
                 data={chartData}
             >

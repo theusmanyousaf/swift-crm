@@ -6,7 +6,6 @@ import { db } from "../db";
 import { revalidatePath } from "next/cache";
 import bcrypt from 'bcryptjs'
 
-
 export async function registerUser(user: Omit<User, "id" | "emailVerified" | "image" | "createdAt" | "updatedAt">) { // TypeScript utility type 'Omit' will remove id from user for type checking
     await db?.user.create({
         data: {
@@ -25,18 +24,17 @@ export const fetchUser = async () => {
                 email: loggedInUser as string
             }
         })
-        console.log(user)
         return user;
     } catch (error) {
         console.log(error)
     }
 }
 
-export const updateUser = async (user: Omit<User, "id" | "emailVerified" | "createdAt" | "updatedAt">) => {
+export async function updateUser(user: Omit<User, "password" | "image" | "id" | "emailVerified" | "createdAt" | "updatedAt">) {
     const session = await auth();
     const loggedInUser = session?.user?.email
     try {
-        await db.user.update({
+        await db?.user.update({
             where: {
                 email: loggedInUser as string
             },
@@ -45,9 +43,8 @@ export const updateUser = async (user: Omit<User, "id" | "emailVerified" | "crea
             }
         })
     } catch (error) {
-        
+        console.log(error)
     }
-
 }
 
 export const login = async (provider: string) => {

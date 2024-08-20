@@ -33,7 +33,7 @@ const SalesHistory = () => {
         <div className="flex flex-col px-4 pt-6 pb-4 border bg-white rounded-lg gap-3 xl:w-[415px]">
             <div className='flex items-center justify-between gap-3'>
                 <h2 className="font-semibold">Sales History</h2>
-                <div className="flex">
+                <div className="md:flex hidden">
                     <button
                         onClick={handlePrevious}
                         disabled={currentPage === 1}
@@ -73,7 +73,31 @@ const SalesHistory = () => {
                     <div className='flex text-gray-500'>{customer.amount}</div>
                 </div>
             ))}
-
+            <div className="flex md:hidden">
+                <button
+                    onClick={handlePrevious}
+                    disabled={currentPage === 1}
+                    className="px-2 py-[5px] rounded-l border-2 border-gray-300 disabled:opacity-50 text-purple-600"
+                >
+                    <BsChevronLeft />
+                </button>
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                        key={index + 1}
+                        onClick={() => setCurrentPage(index + 1)}
+                        className={`px-1.5 text-xs ${currentPage === index + 1 ? 'bg-purple-600 text-white' : 'border-2 text-purple-600'}`}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+                <button
+                    onClick={handleNext}
+                    disabled={currentPage === totalPages}
+                    className="px-2 py-[5px] rounded-r border-2 border-gray-300 disabled:opacity-50 text-purple-600"
+                >
+                    <BsChevronRight />
+                </button>
+            </div>
         </div>
     );
 };

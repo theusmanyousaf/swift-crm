@@ -39,7 +39,7 @@ export default function SignUpForm() {
     return (
         <form className={errors.name?.message?"space-y-2":"space-y-6"} onSubmit={handleSubmit(saveUser)}>
             <div>
-                <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
                     Enter Name
                 </label>
                 <div className="mt-2">

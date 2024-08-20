@@ -3,11 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 interface MenuState {
   menuOpen: boolean;
   editOpen: boolean;
+  formOpen: boolean;
 }
 
 const initialState: MenuState = {
   menuOpen: false,
-  editOpen: false
+  editOpen: false,
+  formOpen: false,
 };
 
 const menuSlice = createSlice({
@@ -19,10 +21,13 @@ const menuSlice = createSlice({
     },
     toggleUplaod: (state) => {
       state.editOpen = !state.editOpen;
+    },
+    toggleForm: (state) => {
+      state.formOpen = !state.formOpen;
     }
   }
 });
 
-export const { toggleNav, toggleUplaod } = menuSlice.actions;
+export const { toggleNav, toggleUplaod, toggleForm } = menuSlice.actions;
 
 export default menuSlice.reducer;

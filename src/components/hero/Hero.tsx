@@ -6,7 +6,7 @@ import { BsSearch } from "react-icons/bs"
 export default async function Hero() {
     const session = await auth();
     return (
-        <div className="flex items-center justify-between mt-[17px] mb-5 lg:mt-[31px] lg:mb-10 xl:mt-10 xl:mb-[60px] ml-[43px] sm:ml-0">
+        <div className="flex items-center justify-between mt-[17px] mb-5 lg:mt-[31px] lg:mb-10 xl:mt-10 xl:mb-[60px] ml-[10.28%] sm:ml-0">
             <div className="flex items-center sm:gap-3 gap-5 lg:gap-5 xl:gap-6 w-auto">
                 {session?.user?.image && <Image src={session?.user?.image || Avatar} alt="Avatar" width={500} height={500} className="xl:w-[89px] xl:h-[89px] lg:w-20 lg:h-20 w-[61px] h-[61px] rounded-full" />}
                 <div>

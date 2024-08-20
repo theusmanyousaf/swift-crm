@@ -28,7 +28,7 @@ const chartConfig = {
 export default function Visitors() {
     return (
         <div className='flex flex-col gap-3 bg-white border rounded-lg py-6 px-4 w-full'>
-            <h1 className='font-semibold'>Overall Sales</h1>
+            <h1 className='font-semibold'>Visitors</h1>
             <hr />
             {/* <Image src={Graph} alt='graph' /> */}
             <VisitorsGraph />

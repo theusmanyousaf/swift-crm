@@ -32,12 +32,12 @@ const chartConfig = {
 } satisfies ChartConfig
 export default function OverallSales() {
     return (
-        <div className='flex flex-col gap-3 bg-white border rounded-lg pt-6 pb-12 px-4 w-full'>
-            <h1 className='font-semibold'>Overall Sales</h1>
-            <div className='flex justify-between'>
+        <div className='flex flex-col xl:gap-3 gap-[10px] bg-white border rounded-lg xl:pt-6 xl:pb-12 xl:px-4 px-[13.28px] py-[19.92px] w-full'>
+            <h1 className='font-semibold text-[13px]'>Overall Sales</h1>
+            <div className='flex md:flex-row flex-col gap-2 justify-between'>
                 <div className='flex gap-2 items-center'>
-                    <h1 className='font-bold text-2xl'>$ 58,986.00</h1>
-                    <button className="rounded-full text-xs font-bold text-lime-800 bg-lime-200 px-2 mr-3">+ 5.6%</button>
+                    <h1 className='font-bold font-albert-sans xl:text-2xl text-xl'>$ 58,986.00</h1>
+                    <button className="rounded-full xl:text-xs text-[10px] font-bold text-lime-800 bg-lime-200 px-2 mr-3">+ 5.6%</button>
                 </div>
                 <div className='flex'>
                     <div className="flex items-center mr-4">
@@ -59,7 +59,7 @@ export default function OverallSales() {
 
 function OverallSalesGraph() {
     return (
-        <ChartContainer config={chartConfig} className='w-full h-[228px] overflow-hidden'>
+        <ChartContainer config={chartConfig} className='w-full xl:h-[228px] h-[120px] -ml-5 overflow-hidden'>
             <LineChart data={chartData}>
                 <CartesianGrid />
                 <XAxis
@@ -73,7 +73,7 @@ function OverallSalesGraph() {
                     tickFormatter={(value) => value !== 0 ? value / 1000 + "K" : value}
                     ticks={[0, 5000, 10000, 15000, 20000]}
                     domain={[0, 20000]}
-                    interval="preserveStart"
+                    interval={0}
                     allowDataOverflow={false}
                     axisLine={false}
                     tickLine={false}
