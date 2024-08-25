@@ -6,11 +6,11 @@ import { BsSearch } from "react-icons/bs"
 export default async function Hero() {
     const session = await auth();
     return (
-        <div className="flex items-center justify-between mt-[17px] mb-5 lg:mt-[31px] lg:mb-10 xl:mt-10 xl:mb-[60px] ml-[10.28%] sm:ml-0">
-            <div className="flex items-center sm:gap-3 gap-5 lg:gap-5 xl:gap-6 w-auto">
-                {session?.user?.image && <Image src={session?.user?.image || Avatar} alt="Avatar" width={500} height={500} className="xl:w-[89px] xl:h-[89px] lg:w-20 lg:h-20 w-[61px] h-[61px] rounded-full" />}
+        <div className="flex items-center justify-between mt-[17px] mb-5 lg:mt-[31px] lg:mb-10 xl:mt-10 xl:mb-[60px] ml-[10.28%] md:ml-0">
+            <div className="flex items-center md:gap-2 sm:gap-3 gap-5 lg:gap-5 xl:gap-6 w-auto">
+                {session?.user?.image && <Image src={session?.user?.image || Avatar} alt="Avatar" width={500} height={500} className="xl:w-[89px] xl:h-[89px] lg:w-20 lg:h-20 md:w-12 md:h-12 w-[61px] h-[61px] rounded-full" />}
                 <div>
-                    <h1 className="font-bold font-albert-sans text-base lg:text-xl xl:text-2xl">Welcome Back, <span className="text-purple-500">{session?.user?.name}</span></h1>
+                    <h1 className="font-bold font-albert-sans text-base md:text-sm lg:text-xl xl:text-2xl">Welcome Back, <span className="text-purple-500">{session?.user?.name}</span></h1>
                     <p className="text-gray-500 font-semibold text-xs lg:text-sm xl:text-base">Here are you monthly store updates.</p>
                 </div>
             </div>

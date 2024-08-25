@@ -38,23 +38,23 @@ const chartConfig = {
 
 export default function SalesStatistics() {
     return (
-        <div className="bg-white py-6 pl-4 pr-[23px] w-full rounded-lg border">
+        <div className="bg-white xl:py-6 py-5 xl:pl-4 xl:pr-[23px] pl-[13px] rounded-lg border mx-[10.28%] lg:mx-0">
             <h1 className="font-semibold mb-3">Sales Statistics</h1>
             <hr className="border-gray-300 mr-4 mb-3" />
             <div className='flex justify-evenly mr-2 mb-3'>
                 <div className='flex flex-1'>
                     <div className='w-[25px] h-[25px] flex items-center justify-center'><div className='bg-sky-400 rounded-full w-4 h-4' /></div>
-                    <div className='flex-col'><h2 className='text-gray-600 font-semibold'>Total Revenue</h2><h1 className='text-2xl font-bold'>$ 27,733.00 <span className='text-gray-300 font-semibold text-[15px]'>Orders</span></h1></div>
+                    <div className='flex-col'><h2 className='text-gray-600 font-semibold xl:text-[15px] text-xs'>Total Revenue</h2><h1 className='xl:text-2xl text-xl font-bold'>$ 27,733.00 <span className='text-gray-300 font-semibold xl:text-[15px] text-xs'>Orders</span></h1></div>
                 </div>
                 <hr className='w-0 h-full border border-gray-400 mr-2' />
                 <div className='flex'>
                     <div className='w-[25px] h-[25px] flex items-center justify-center'><div className='bg-lime-600 rounded-full w-4 h-4' /></div>
-                    <div className='flex-col'><h2 className='text-gray-600 font-semibold'>Total Sales</h2><h1 className='text-2xl font-bold'>9,234 <span className='text-gray-300 font-semibold text-[15px]'>Products</span></h1></div>
+                    <div className='flex-col'><h2 className='text-gray-600 font-semibold xl:text-[15px] text-xs'>Total Sales</h2><h1 className='xl:text-2xl text-xl font-bold'>9,234 <span className='text-gray-300 font-semibold xl:text-[15px] text-xs'>Products</span></h1></div>
                 </div>
                 <hr className='w-0 h-full border border-gray-400 mx-2' />
                 <div className='flex'>
                     <div className='w-[25px] h-[25px] flex items-center justify-center'><div className='bg-purple-500 rounded-full w-4 h-4' /></div>
-                    <div className='flex-col'><h2 className='text-gray-600 font-semibold'>Total Views</h2><h1 className='text-2xl font-bold'>15,788 <span className='text-gray-300 font-semibold text-[15px]'>Views</span></h1></div>
+                    <div className='flex-col'><h2 className='text-gray-600 font-semibold xl:text-[15px] text-xs'>Total Views</h2><h1 className='xl:text-2xl text-xl font-bold'>15,788 <span className='text-gray-300 font-semibold xl:text-[15px] text-xs'>Views</span></h1></div>
                 </div>
             </div>
             <SalesStatisticsGraph />
@@ -64,8 +64,8 @@ export default function SalesStatistics() {
 
 function SalesStatisticsGraph() {
     return (
-        <ChartContainer config={chartConfig} className='w-full h-[288px] overflow-hidden'>
-            <LineChart data={chartData} margin={{ right: 24 }}>
+        <ChartContainer config={chartConfig} className='w-full xl:h-[288px] h-[189px] overflow-hidden -ml-4'>
+            <LineChart data={chartData} >
                 <CartesianGrid />
                 <XAxis
                     dataKey="date"
@@ -79,7 +79,6 @@ function SalesStatisticsGraph() {
                     }}
                     ticks={xAxisTicks}
                     interval={0}
-                    padding={{ right: 60 }}
                 />
                 <YAxis
                     tickFormatter={(value) => value !== 0 ? value / 1000 + "K" : value}

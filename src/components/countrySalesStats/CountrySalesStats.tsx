@@ -35,7 +35,7 @@ export default function CountrySalesStats() {
     ]
 
     return (
-        <div className="flex flex-col gap-3 px-4 pt-6 bg-white border rounded-lg xl:min-w-[390px]">
+        <div className="flex flex-col gap-3 px-4 pt-6 bg-white border rounded-lg xl:min-w-[390px] lg:max-w-[323.5px] mx-[10.28%] md:mx-0">
             <h1 className="font-semibold">Country Sales Statistics</h1>
             <hr />
             <Image src={Map} alt="Countries stats Map" />

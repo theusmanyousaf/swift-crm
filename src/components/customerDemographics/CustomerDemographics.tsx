@@ -20,11 +20,11 @@ const colorScale = scaleQuantize<string>()
 
 const CustomerDemographics = () => {
     return (
-        <div className="py-6 px-4 bg-white rounded-lg mb-6 border">
+        <div className="xl:py-6 xl:px-4 py-5 px-[13px] bg-white rounded-lg mb-6 border mx-[10.28%] lg:mx-0">
             <h2 className="text-2xl font-bold mb-4">Customer Demographic</h2>
             <hr className='my-3' />
             <div className='bg-gray-100'>
-                <ComposableMap projection="geoAlbersUsa" width={1003} height={260}>
+                <ComposableMap projection="geoAlbersUsa" width={1003} height={260} className='xl:h-[260px] w-full h-[216.5px]'>
                     <Geographies geography={geoUrl}>
                         {({ geographies }: { geographies: any }) =>
                             geographies.map((geo: GeographyProps) => {
@@ -49,14 +49,14 @@ const CustomerDemographics = () => {
                     </Geographies>
                 </ComposableMap>
             </div>
-            <div className="flex justify-start mt-3">
+            <div className="flex justify-start mt-3 font-semibold text-gray-500">
                 <div className="flex items-center mr-4">
-                    <div className="rounded-full w-4 h-4 bg-[#553c9a] mr-2" />
-                    <span>Majority Members</span>
+                    <div className="rounded-full xl:w-[16.5] xl:h-[16.5] w-[13.5px] h-[13.5px] bg-[#553c9a] mr-2" />
+                    <span className='xl:text-[15px] text-[12.5px]'>Majority Members</span>
                 </div>
                 <div className="flex items-center">
-                    <div className=" rounded-full w-4 h-4 bg-[#d6bdea] mr-2" />
-                    <span>Majority Non-Members</span>
+                    <div className="rounded-full xl:w-[16.5] xl:h-[16.5] w-[13.5px] h-[13.5px] bg-[#d6bdea] mr-2" />
+                    <span className='xl:text-[15px] text-[12.5px]'>Majority Non-Members</span>
                 </div>
             </div>
         </div>

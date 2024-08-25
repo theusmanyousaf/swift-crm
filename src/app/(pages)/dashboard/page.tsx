@@ -8,11 +8,11 @@ import NewCustomers from "@/components/newCustomers/NewCustomers"
 
 export default function dashboard() {
   return (
-    <div className="xl:ml-7 lg:ml-[41px] sm:ml-8">
+    <div className="xl:ml-7 lg:ml-[41px] lg:mr-0 sm:mx-8 overflow-auto">
       <Hero />
       <div className="flex flex-col lg:flex-row xl:gap-[21px] gap-[18px]">
-        <div className="flex flex-col gap-5">
-          <div className="flex md:flex-row flex-col md:items-center md:justify-center xl:gap-[21px] lg:gap-[22px] gap-5">
+        <div className="flex flex-col gap-5 overflow-auto">
+          <div className="flex md:flex-row flex-col xl:gap-[21px] lg:gap-[22px] gap-5 overflow-y-hidden overflow-x-auto">
             <MonthlyTarget currentOrders={2040} targetOrders={3000} />
             <MonthlyIncome />
           </div>

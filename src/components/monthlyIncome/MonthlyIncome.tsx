@@ -51,7 +51,7 @@ const chartConfig = {
 
 export default function MonthlyIncome() {
   return (
-    <div className="flex sm:flex-row flex-col gap-3 xl:pt-6 xl:pb-5 xl:px-4 pt-5 pb-4 px-[13px] xl:h-60 sm:h-[196px] xl:min-w-[560px] lg:w-[459px] bg-white rounded-lg border mx-[10.28%] md:mx-0">
+    <div className="flex sm:flex-row flex-col gap-3 xl:pt-6 xl:pb-5 xl:px-4 pt-5 pb-4 px-[13px] xl:h-60 sm:h-[196px] xl:min-w-[560px] md:min-w-[459px] bg-white rounded-lg border mx-[10.28%] md:mx-0">
       <div className="flex flex-col xl:gap-[17px] gap-3 xl:w-[225px]">
         <h1 className="font-semibold xl:text-base text-[13px]">Monthly Income</h1>
         <div className="flex items-center justify-between"><h1 className="xl:text-2xl text-xl font-albert-sans font-bold">$ 6,567.00</h1><button className="rounded-full text-[10.5px] bg-lime-200 px-2 mr-3">+ 5.6%</button></div>

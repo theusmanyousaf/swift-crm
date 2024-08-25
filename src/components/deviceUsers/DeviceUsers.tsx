@@ -7,16 +7,16 @@ export default function DeviceUsers() {
     const widthDesktop = (desktopUsers / totalUsers) * 100
 
     return (
-        <div className='xl:py-6 xl:px-4 flex gap-3 my-[22px] bg-white w-full rounded-lg border'>
+        <div className='xl:py-6 xl:px-4 py-5 px-[13px] flex gap-3 my-[22px] bg-white lg:w-full rounded-lg border  mx-[10.28%] lg:mx-0'>
             <div className='flex flex-col gap-2' style={{ width: `${widthDesktop}%` }}>
-                <h1 className='font-semibold text-[15px] text-gray-500'>Desktop Users</h1>
-                <h1 className='font-bold text-2xl'>{widthDesktop}%</h1>
-                <div className='bg-blue-500 rounded-l h-8 w-full'/>
+                <h1 className='font-semibold xl:text-[15px] text-[12.5px] text-gray-500'>Desktop Users</h1>
+                <h1 className='font-bold xl:text-2xl text-xl'>{widthDesktop}%</h1>
+                <div className='bg-blue-500 rounded-l xl:h-[31px] h-[25.7px] w-full'/>
             </div>
             <div className='flex flex-col gap-2' style={{ width: `${widthMobile}%` }} >
-                <h1 className='font-semibold text-[15px] text-gray-500'>Mobile Users</h1>
-                <h1 className='font-bold text-2xl'>{widthMobile}%</h1>
-                <div className='bg-lime-600 rounded-r h-8 w-full' />
+                <h1 className='font-semibold xl:text-[15px] text-[12.5px] text-gray-500'>Mobile Users</h1>
+                <h1 className='font-bold xl:text-2xl text-xl'>{widthMobile}%</h1>
+                <div className='bg-lime-600 rounded-r xl:h-[31px] h-[25.7px] w-full' />
             </div>
         </div>
     )

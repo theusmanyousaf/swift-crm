@@ -8,7 +8,7 @@ import Visitors from '@/components/visitors/Visitors'
 
 export default function Analytics() {
   return (
-    <div className='md:ml-[29px] mx-[10.28%] md:mx-0'>
+    <div className='md:mx-[29px] mx-[10.28%] lg:mr-0'>
       <Header title='Analytics' />
       <div className='xl:mt-[62px] flex lg:flex-row flex-col gap-6'>
         <OverallSales />

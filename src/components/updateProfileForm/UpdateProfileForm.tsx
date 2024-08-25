@@ -12,6 +12,8 @@ import { AppDispatch, RootState } from "@/store/store";
 import { useEdgeStore } from "@/lib/edgestore";
 import { toggleForm, toggleUplaod } from "@/store/slices/navSlice";
 import { SingleImageDropzone } from "../singleImageDropzone/SingleImageDropzone";
+import { addCustomers } from "@/constants/actions/customersActions";
+import { customers } from "@/constants/customers";
 
 type InputType = z.infer<typeof UpdateProfileFormSchema>;
 
@@ -23,8 +25,8 @@ export default function UpdateProfileForm() {
         resolver: zodResolver(UpdateProfileFormSchema)
     });
 
-    // const [file, setFile] = useState<File>();
-    // const [url, setUrl] = useState("");
+    const [file, setFile] = useState<File>();
+    const [url, setUrl] = useState("");
     const [data, setData] = useState({
         name: '',
         email: ''
@@ -85,6 +87,102 @@ export default function UpdateProfileForm() {
                         className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                     {errors.email?.message && <span className="text-red-500 text-[10px] font-medium">{errors.email?.message}</span>}
+                </div>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div className="col-span-full">
+                    <label
+                        htmlFor="image"
+                        className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                        Profile Picture
+                    </label>
+                    <div className="mt-2 pr-5">
+                        <SingleImageDropzone
+                            width={160}
+                            height={160}
+                            value={file}
+                            onChange={(file) => {
+                                setFile(file);
+                            }}
+                        />
+                        <button
+                            type="button"
+                            className="absolute rounded-md flex items-center bg-white px-2.5 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 -mt-6"
+                            onClick={
+                                async () => {
+                                    if (file) {
+                                        const res = await edgestore.publicFiles.upload({
+                                            file,
+                                        });
+                                        console.log("response", res)
+                                    }
+                                }
+                            }
+
+                        >
+                            Upload
+                        </button>
+                        {/* {
+                                    file
+                                        ? <button
+                                            type="button"
+                                            className="absolute rounded-md flex items-center bg-white px-2.5 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 -mt-6"
+                                            onClick={
+                                                async () => {
+                                                    if (file) {
+                                                        const res = await edgestore.publicFiles.upload({
+                                                            file,
+                                                        });
+                                                        setUrl(res?.url)
+                                                    }
+                                                }
+                                            }
+    
+                                        >
+                                            Upload
+                                        </button>
+                                        : <button
+                                            type="button"
+                                            className="absolute rounded-md flex items-center bg-white px-2.5 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 -mt-6"
+                                            onClick={handleMenuClick}
+                                        >
+                                            <MdOutlineModeEdit size={16} /> Edit
+                                        </button>
+                                } */}
+                        {/* <div
+                                    onClick={handleMenuClick}
+                                    className={`bg-white divide-y ring-1 ring-gray-300 divide-gray-100 rounded-sm shadow-sm dark:bg-gray-700 mt-3 text-xs ease-in w-36 ${editOpen ? "block" : "hidden"
+                                        }`}
+                                >
+                                    <div>
+                                        <label
+                                            htmlFor="image"
+                                            className="block px-4 py-2 rounded-t-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                        >
+                                            Upload a Photo...
+                                            <input
+                                                id="image"
+                                                type="file"
+                                                name="image"
+                                                className="hidden"
+                                                onClick={handleMenuClick}
+                                                onChange={(e) => {
+                                                    setFile(e.target.files?.[0]);
+                                                    setData({
+                                                        ...data,
+                                                        image: url || "",
+                                                    });
+                                                }}
+                                            />
+                                        </label>
+                                    </div>
+                                    <button type="button" className="block px-4 py-2 hover:bg-gray-100 rounded-b-sm dark:hover:bg-gray-600 dark:hover:text-white text-left w-full">
+                                        Remove Photo
+                                    </button>
+                                </div> */}
+                    </div>
                 </div>
             </div>
 

@@ -27,6 +27,8 @@ model User {
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  document Document[]
 }
  
 model Account {
@@ -85,4 +87,40 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
  
   @@unique([userId, credentialID])
+}
+
+model Customer {
+  CustomerID        String    @id @default(auto()) @map("_id") @db.ObjectId
+  name              String
+  imageUrl          String
+  email             String
+  phone             String
+  address           String
+  status            String
+  paymentStatus     String
+  orderQuantity     Int
+  products      Product[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product{
+  productId         String  @id @default(auto()) @map("_id") @db.ObjectId
+  name              String
+  imageUrl          String
+  price             Int
+  quantity          Int 
+  createdAt         DateTime @default(now()) 
+  updatedAt         DateTime @updatedAt
+  
+  customer Customer @relation(fields: [productId], references: [CustomerID], onDelete: Cascade)
+}
+
+model Document {
+  DocumentID    String @id @default(auto()) @map("_id") @db.ObjectId
+  user User   @relation(fields: [DocumentID], references: [id])
+  type String
+  version Int
+  status  String
+  docUrl  String
 }

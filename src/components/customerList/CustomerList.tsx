@@ -1,26 +1,26 @@
 'use client'
-import { useState } from 'react';
-import Image, { StaticImageData } from 'next/image';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { BsChevronRight, BsChevronLeft, BsChevronDown } from 'react-icons/bs';
-import Avatar1 from '/public/assets/avatar1.png'
-import Avatar2 from '/public/assets/avatar2.png'
-import Avatar3 from '/public/assets/avatar3.png'
-import Avatar4 from '/public/assets/avatar4.png'
-import Avatar5 from '/public/assets/avatar5.png'
-import Avatar6 from '/public/assets/avatar6.png'
-
-type CustomerType = {
-    phone: string
-    email: string
-    name: string
-    status: string
-    address: string
-    imageUrl: StaticImageData
-}
+import { fetchCustomers } from '@/constants/actions/customersActions';
+import { Customer } from '@prisma/client';
 
 const CustomerList = () => {
-    const [currentPage, setCurrentPage] = useState(1);
 
+    const [customers, setCustomers] = useState<Customer[]>([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    useEffect(() => {
+        const loadCustomers = async () => {
+            try {
+                const data = await fetchCustomers(); // Assuming fetchCustomers returns a promise that resolves to an array of customers
+                setCustomers(data as Customer[]);
+            } catch (error) {
+                console.error("Error fetching customers:", error);
+            }
+        };
+
+        loadCustomers();
+    }, []);
 
     const [selectedNumber, setSelectedNumber] = useState<number>(10);
 
@@ -30,128 +30,11 @@ const CustomerList = () => {
         setSelectedNumber(value);
     };
 
-    const customersList: CustomerType[] = [
-        {
-            phone: '555-123-4567',
-            email: "jacobswanson@email.com",
-            name: "Jacob Swanson",
-            status: "Online",
-            address: "Phoenix, USA",
-            imageUrl: Avatar1,
-        },
-        {
-            phone: '555-987-6543',
-            email: "ameliajohnson@email.com",
-            name: "Amelia Johnson",
-            status: "Online",
-            address: "Philadelphia, USA",
-            imageUrl: Avatar2,
-        },
-        {
-            phone: '555-555-7890',
-            email: "ericslater@email.com",
-            name: "Jacob Swanson",
-            status: "Offline",
-            address: "Dallas, USA",
-            imageUrl: Avatar3,
-        },
-        {
-            phone: '555-321-6540',
-            email: "aaronchadwick@email.com",
-            name: "Amelia Johnson",
-            status: "Online",
-            address: "San Diego, USA",
-            imageUrl: Avatar4,
-        },
-        {
-            phone: '555-888-9999',
-            email: "jessicasloan@email.com",
-            name: "Jacob Swanson",
-            status: "Offline",
-            address: "Detroit, USA",
-            imageUrl: Avatar5,
-        },
-        {
-            phone: '555-444-2222',
-            email: "marygrover@email.com",
-            name: "Amelia Johnson",
-            status: "Online",
-            address: "Portland, USA",
-            imageUrl: Avatar6,
-        },
-        {
-            phone: '555-666-7777',
-            email: "mattrobbins@email.com",
-            name: "Jacob Swanson",
-            status: "Online",
-            address: "Charlotte, USA",
-            imageUrl: Avatar3,
-        },
-        {
-            phone: '555-777-8888',
-            email: "dehliadrake@email.com",
-            name: "Amelia Johnson",
-            status: "Online",
-            address: "Las Vegas, USA",
-            imageUrl: Avatar1
-        },
-        {
-            phone: '555-234-5678',
-            email: "conradwebber@email.com",
-            name: "Jacob Swanson",
-            status: "Online",
-            address: "Nashville, USA",
-            imageUrl: Avatar4,
-        },
-        {
-            phone: '555-876-5432',
-            email: "zekeromez@email.com",
-            name: "Amelia Johnson",
-            status: "Online",
-            address: "Indianapolis, USA",
-            imageUrl: Avatar2
-        },
-        {
-            phone: '11',
-            email: "31 Jul 2023",
-            name: "Jacob Swanson",
-            status: "Online",
-            address: "$632.00",
-            imageUrl: Avatar6
-        },
-        {
-            phone: '12',
-            email: "31 Jul 2023",
-            name: "Amelia Johnson",
-            status: "Online",
-            address: "$489.00",
-            imageUrl: Avatar5
-        },
-        {
-            phone: '13',
-            email: "31 Jul 2023",
-            name: "Jacob Swanson",
-            status: "Online",
-            address: "$762.00",
-            imageUrl: Avatar1
-        },
-        {
-            phone: '14',
-            email: "31 Jul 2023",
-            name: "Amelia Johnson",
-            status: "Online",
-            address: "$154.00",
-            imageUrl: Avatar3
-        },
-        // Add more customers as needed...
-    ];
-
-
     // Calculate the number of pages
-    const totalPages = Math.ceil(customersList.length / itemsPerPage);
+    const totalPages = Math.ceil(customers.length / itemsPerPage);
 
     // Get the customers for the current page
-    const currentCustomers = customersList.slice(
+    const currentCustomers = customers.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
@@ -168,7 +51,7 @@ const CustomerList = () => {
 
 
     return (
-        <div className="py-8 mb-[100px] overflow-x-auto">
+        <div className="py-8 mb-[100px] overflow-x-auto ml-[10.28%] lg:-ml-[2px]">
             <div className='flex xl:gap-x-6 gap-x-5 items-center justify-around p-2 font-semibold min-w-[842px] xl:h-[47px] h-[39px] xl:text-sm text-xs '>
                 <input type="checkbox" />
                 <div className='flex-1 py-[5.5px] xl:min-w-60 min-w-[198px]'>Customer Name</div>
@@ -178,10 +61,10 @@ const CustomerList = () => {
                 <div className='py-[5.5px] pr-10 xl:min-w-[107px] min-w-[89px]'>Status</div>
             </div>
             {currentCustomers.map((customer) => (
-                <div key={customer.phone} className='flex gap-x-6 my-3 p-2 items-center bg-white rounded-md border text-gray-500 min-w-[842px] xl:text-sm text-xs font-medium xl:h-[47px] h-[39px]'>
+                <div key={customer.CustomerID} className='flex gap-x-6 my-3 p-2 items-center bg-white rounded-md border text-gray-500 min-w-[842px] xl:text-sm text-xs font-medium xl:h-[47px] h-[39px]'>
                     <input type="checkbox" />
                     <div className='flex items-center w-full xl:min-w-60 min-w-[198px]'>
-                        <Image src={customer.imageUrl} alt={customer.name} className="w-[31px] h-[31px] rounded-full mr-2" />
+                        <Image src={customer.imageUrl} alt={customer.name} width={40} height={40} className="w-[31px] h-[31px] rounded-full mr-2" />
                         {customer.name}
                     </div>
                     <div className='w-full xl:min-w-[177px] min-w-[147px]'>{customer.email}</div>
@@ -195,8 +78,8 @@ const CustomerList = () => {
                 </div>
             ))}
 
-            <div className='flex md:flex-row flex-col justify-between items-center gap-4'>
-                <div className='font-semibold text-[15px]'>
+            <div className='flex lg:flex-row flex-col justify-between items-center gap-4'>
+                <div className='font-semibold text-[15px] ml-1'>
                     Showing <span><select
                         className="py-2 px-1 rounded bg-purple-500 text-white focus:outline-none"
                         value={selectedNumber}
@@ -207,7 +90,7 @@ const CustomerList = () => {
                                 {number}
                             </option>
                         ))}
-                    </select></span> of {customersList.length} entries
+                    </select></span> of {customers.length} entries
                 </div>
 
                 <div className="flex">

@@ -59,7 +59,7 @@ export default function OverallSales() {
 
 function OverallSalesGraph() {
     return (
-        <ChartContainer config={chartConfig} className='w-full xl:h-[228px] h-[120px] -ml-5 overflow-hidden'>
+        <ChartContainer config={chartConfig} className='lg:h-[228px] h-[120px] -ml-5 overflow-hidden'>
             <LineChart data={chartData}>
                 <CartesianGrid />
                 <XAxis

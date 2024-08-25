@@ -4,7 +4,7 @@ import Header from '@/components/header/Header'
 
 export default function Products() {
     return (
-        <div className='lg:ml-10'>
+        <div className='lg:ml-10 w-full'>
             <Header title='Products'/>
             <div className='flex flex-col gap-y-3 px-4 bg-white w-full border rounded-lg pt-5 pb-6 lg:mt-11'>
                 <div className='flex justify-between p-2 pr-6 text-sm font-semibold bg-purple-100 rounded-md gap-6'>

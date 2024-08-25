@@ -6,17 +6,20 @@ import Link from "next/link";
 import { RxDashboard, RxCross1 } from "react-icons/rx";
 import { FiSettings, FiMenu } from "react-icons/fi";
 import { TbLogout2 } from "react-icons/tb";
-import { BsPeople, BsCart2, BsBarChartLine, BsBell, BsFileEarmarkRuled, BsInfoCircle, BsSearch } from "react-icons/bs";
+import { BsPeople, BsCart2, BsBarChartLine, BsBell, BsFileEarmarkRuled, BsInfoCircle, BsSearch, BsBasket2, BsBoxSeam } from "react-icons/bs";
+import { FaBoxOpen } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/store/store";
 import { toggleNav } from "@/store/slices/navSlice";
 import { logout } from "../../../actions/auth";
+import { usePathname } from "next/navigation";
 
 export default function SideNav() {
+    const pathName = usePathname();
     const menuOpen = useSelector((state: RootState) => state.nav.menuOpen);
     const dispatch: AppDispatch = useDispatch();
 
-    const [activeLink, setActiveLink] = useState<string>('/dashboard');
+    const [activeLink, setActiveLink] = useState<string>(pathName);
 
     const handleMenuClick = () => {
         dispatch(toggleNav());
@@ -27,12 +30,12 @@ export default function SideNav() {
     };
 
     return (
-        <div className="xl:mt-[22px] sm:ml-4 md:ml-0 sm:mt-[21px] h-auto sm:h-[752px] sm:min-w-[220px] sm:max-w-[220px] bg-white sm:shadow-md rounded-md sm:px-4 sm:py-8 mb-5">
-            <div className="flex justify-between items-center py-2 sm:py-0 sm:px-0 px-11">
-                <div className="sm:mb-8 py-[5px] sm:py-0 pr-4 sm:pr-0 sm:px-4 sm:text-left">
+        <div className="xl:mt-[22px] md:ml-4 lg:ml-0 md:mt-[21px] md:h-[898px] md:min-w-[220px] md:max-w-[220px] bg-white md:shadow-md rounded-md md:px-4 md:py-8 mb-5">
+            <div className="flex justify-between items-center py-2 md:py-0 md:px-0 px-11">
+                <div className="md:mb-8 py-[5px] md:py-0 pr-4 md:pr-0 md:px-4 md:text-left">
                     <Link href="/dashboard"><Image src={Logo} alt="SwiftCRM" /></Link>
                 </div>
-                <div className="sm:hidden block">
+                <div className="md:hidden block">
                     {
                         menuOpen
                             ? <button onClick={handleMenuClick} className="flex bg-purple-600 w-14 h-10 items-center justify-center rounded-md border border-blue-500"><RxCross1 className="text-white" /></button>
@@ -40,10 +43,10 @@ export default function SideNav() {
                     }
                 </div>
             </div>
-            <div className={`absolute sm:static z-[10] bg-white w-full sm:w-auto sm:opacity-100 sm:top-auto ${menuOpen ? "opacity-100" : "top-[-1000px] opacity-0"}`}>
-                <nav className="ml-3 sm:ml-0 max-w-[351px]">
-                    <div className="hidden sm:block py-2 text-xs text-gray-500 font-albert-sans font-bold mb-4">GENERAL</div>
-                    <div className="flex flex-col sm:gap-4 gap-2">
+            <div className={`absolute md:static z-[10] bg-white w-full md:w-auto md:opacity-100 md:top-auto ${menuOpen ? "opacity-100" : "top-[-1000px] opacity-0"}`}>
+                <nav className="ml-3 md:ml-0 max-w-[351px]">
+                    <div className="hidden md:block py-2 text-xs text-gray-500 font-albert-sans font-bold mb-4">GENERAL</div>
+                    <div className="flex flex-col md:gap-4 gap-2">
                         <div>
                             <Link href="/dashboard">
                                 <div
@@ -111,8 +114,35 @@ export default function SideNav() {
                             </Link>
                         </div>
                     </div>
-                    <div className="hidden sm:block py-2 text-xs text-gray-500 font-albert-sans font-bold mb-4 mt-8">SUPPORT</div>
-                    <div className="flex flex-col sm:gap-4 gap-2">
+
+                    <div className="hidden md:block py-2 text-xs text-gray-500 font-albert-sans font-bold mb-4">Store</div>
+                    <div className="flex flex-col md:gap-4 gap-2">
+                        <div>
+                            <Link href="/items">
+                                <div
+                                    onClick={() => handleLinkClick('/items')}
+                                    className={`flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md cursor-pointer ${activeLink === '/items' ? 'bg-purple-100 text-purple-600' : ''}`}
+                                >
+                                    <BsBasket2 className="mr-2" />
+                                    Items
+                                </div>
+                            </Link>
+                        </div>
+                        <div>
+                            <Link href="/orders">
+                                <div
+                                    onClick={() => handleLinkClick('/orders')}
+                                    className={`flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md cursor-pointer ${activeLink === '/orders' ? 'bg-purple-100 text-purple-600' : ''}`}
+                                >
+                                    <BsBoxSeam className="mr-2" />
+                                    Orders
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="hidden md:block py-2 text-xs text-gray-500 font-albert-sans font-bold mb-4 mt-8">SUPPORT</div>
+                    <div className="flex flex-col md:gap-4 gap-2">
                         <div>
                             <Link href="/help">
                                 <div
@@ -137,13 +167,13 @@ export default function SideNav() {
                         </div>
                     </div>
                 </nav>
-                <div className="sm:pt-8 pt-2 ml-3 sm:ml-0 max-w-[351px]">
+                <div className="md:pt-8 pt-2 ml-3 md:ml-0 max-w-[351px]">
                     <div onClick={() => logout()} className="flex items-center py-2 px-4 text-gray-600 hover:bg-purple-100 hover:text-purple-600 rounded-md cursor-pointer">
                         <TbLogout2 className="mr-2" />
                         Log Out
                     </div>
                 </div>
-                <div className="flex justify-between mt-6 sm:hidden ml-3 sm:ml-0 mb-2 max-w-[351px]">
+                <div className="flex justify-between mt-6 md:hidden ml-3 md:ml-0 mb-2 max-w-[351px]">
                     <input id="search" type="text" placeholder="Type here" className="h-[30px] border border-grey-50 rounded-md pl-2 min-w-40" />
                     <button className="bg-purple-500 text-white flex items-center justify-evenly w-24 h-7 rounded-md">
                         <BsSearch />Search
