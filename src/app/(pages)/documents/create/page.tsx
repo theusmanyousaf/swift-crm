@@ -1,12 +1,12 @@
 import { Customer } from '@prisma/client';
 import { fetchCustomers } from '@/constants/actions/customersActions';
-import DocForm from '@/components/docForm/DocForm';
+import DocumentCreateForm from '@/components/docForm/DocumentCreateForm';
 
-export default async function Create(){
+export default async function DocumentCreate(){
     const customers = await fetchCustomers()
     return(
         <div>
-            <DocForm customers={customers as Customer[]} />
+            <DocumentCreateForm customers={customers as Customer[]} />
         </div>
     )
 }

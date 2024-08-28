@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import navReducer from './slices/navSlice'
+import authReducer from './slices/authSlice'
 import { useDispatch } from 'react-redux';
 
 export const store = configureStore({
     reducer: {
-        nav: navReducer
+        nav: navReducer,
+        auth: authReducer,
     },
 })
 

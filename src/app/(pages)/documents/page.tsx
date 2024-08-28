@@ -1,4 +1,3 @@
-'use client'
 import DocumentList from '@/components/documentList/DocumentList'
 import Header from '@/components/header/Header'
 

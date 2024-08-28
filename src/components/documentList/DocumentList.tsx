@@ -1,32 +1,54 @@
 'use client'
-import { useState } from 'react';
-import Image, { StaticImageData } from 'next/image';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { BsChevronRight, BsChevronLeft, BsSearch, BsUpload } from 'react-icons/bs';
 import { CiSquarePlus } from "react-icons/ci";
-import Avatar1 from '/public/assets/avatar1.png'
-import Avatar2 from '/public/assets/avatar2.png'
-import Avatar3 from '/public/assets/avatar3.png'
-import Avatar4 from '/public/assets/avatar4.png'
-import Avatar5 from '/public/assets/avatar5.png'
-import Avatar6 from '/public/assets/avatar6.png'
 import Link from 'next/link';
+import { fetchDocuments } from '@/constants/actions/docActions';
+import { useRouter } from 'next/navigation';
 
-type CustomerType = {
-    docName: string
-    date: string
-    type: string
-    name: string
-    imageUrl: StaticImageData
-    version: number
-    status: string
+type DocumentData = {
+    customer: {
+        name: string;
+        imageUrl: string;
+    };
+} & {
+    DocumentID: string;
+    documentName: string;
+    type: string;
+    version: number;
+    status: string;
+    documentUrl: string;
+    createdAt: Date;
+    updatedAt: Date;
+    CustomerID: string;
 }
 
 
 export default function DocumentList() {
+    const router = useRouter();
+
+    const handleEditClick = (DocumentId: string) => {
+        router.push(`/documents/edit/${DocumentId}`);
+    };
+
+    const [documents, setDocuments] = useState<DocumentData[]>()
+
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const userData = await fetchDocuments();
+                if (userData) {
+                    setDocuments(userData); // Set initial data state
+                }
+            } catch (error) {
+                console.error("Failed to fetch user", error);
+            }
+        };
+        getUser();
+    }, []);
 
     const [currentPage, setCurrentPage] = useState(1);
-
-
     const [selectedNumber, setSelectedNumber] = useState<number>(10);
 
     const itemsPerPage = selectedNumber;
@@ -35,151 +57,11 @@ export default function DocumentList() {
         setSelectedNumber(value);
     };
 
-    const customersList: CustomerType[] = [
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Active",
-        },
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Active",
-        },
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Active",
-        },
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Active",
-        },
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Archive",
-        },
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Archive",
-        },
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Active",
-        },
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Archive",
-        },
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Active",
-        },
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Active",
-        },
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Active",
-        },
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Archive",
-        },
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Archive",
-        },
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Archive",
-        },
-        {
-            docName: "Product Requirements",
-            date: "29 Jul 2023",
-            type: "PDF",
-            imageUrl: Avatar1,
-            name: "Jacob Swanson",
-            version: 1,
-            status: "Active",
-        },
-        // Add more customers as needed...
-    ];
-
-
     // Calculate the number of pages
-    const totalPages = Math.ceil(customersList.length / itemsPerPage);
+    const totalPages = Math.ceil(documents?.length as number / itemsPerPage);
 
     // Get the customers for the current page
-    const currentCustomers = customersList.slice(
+    const currentCustomers = documents?.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
@@ -222,27 +104,27 @@ export default function DocumentList() {
                         <div className='py-[5.5px] pr-10 xl:min-w-[81px] min-w-[68px]'>Status</div>
                         <div className='py-[5.5px] xl:min-w-[107px] min-w-[88.8px]'>Actions</div>
                     </div>
-                    {currentCustomers.map((customer,index) => (
+                    {documents?.map((data, index) => (
                         <div key={index} className='flex xl:gap-x-6 gap-x-5 mt-3 p-2 items-center bg-white text-gray-500 min-w-[842px] xl:text-sm text-xs font-medium xl:h-[47px] h-[39px]'>
                             <input type="checkbox" />
                             <div className='flex flex-col xl:min-w-[247px] min-w-[205px]'>
-                                <div className='text-xs xl:text-sm text-black'>{customer.docName}</div>
-                                <div className='text-[10px] xl:text-xm '>Uploaded {customer.date}</div>
+                                <div className='text-xs xl:text-sm text-black'>{data.documentName}</div>
+                                <div className='text-[10px] xl:text-xm '>Uploaded {data.createdAt.toLocaleDateString()}</div>
                             </div>
-                            <div className='w-full xl:min-w-[56px] min-w-[46.5px]'>{customer.type}</div>
+                            <div className='w-full xl:min-w-[56px] min-w-[46.5px]'>{data.type.toUpperCase()}</div>
                             <div className='flex items-center w-full xl:min-w-[194px] min-w-[161px]'>
-                                <Image src={customer.imageUrl} alt={customer.name} className="w-[31px] h-[31px] rounded-full mr-2" />
-                                {customer.name}
+                                <Image src={data.customer.imageUrl} alt={data.customer.name} width={120} height={120} className="w-[31px] h-[31px] rounded-full mr-2" />
+                                {data.customer.name}
                             </div>
-                            <div className='w-full xl:min-w-[115.5px] min-w-[95px]'>{customer.version}</div>
+                            <div className='w-full xl:min-w-[115.5px] min-w-[95px]'>{data.version}</div>
                             <div className='w-full flex-1 pr-9 xl:min-w-[81px] min-w-[68px] xl:text-xs lg:text-[10px] font-medium font-albert-sans'>
-                                <span className={`px-2 py-1 rounded-full text-xs font-bold ${customer.status === 'Active' ? 'bg-lime-100 text-lime-600' : 'bg-red-100 text-red-600'}`}>
-                                    {customer.status}
+                                <span className={`px-2 py-1 rounded-full text-xs font-bold ${data.status.charAt(0).toUpperCase() + data.status.slice(1) === 'Active' ? 'bg-lime-100 text-lime-600' : 'bg-red-100 text-red-600'}`}>
+                                    {data.status.charAt(0).toUpperCase() + data.status.slice(1)}
                                 </span>
                             </div>
                             <div className='w-full flex gap-4 font-albert-sans'>
-                                <button className='border-2 border-purple-500 rounded-md xl:py-1 xl:px-2 py-[3.32px] px-[6.64px] '>View</button>
-                                <button className='border-2 border-purple-500 rounded-md xl:py-1 xl:px-2 py-[3.32px] px-[6.64px] '>Edit</button>
+                                <Link href={data.documentUrl} target='_blank' ><button className='border-2 border-purple-500 rounded-md xl:py-1 xl:px-2 py-[3.32px] px-[6.64px] '>View</button></Link>
+                                <button onClick={() => handleEditClick(data.DocumentID)} className='border-2 border-purple-500 rounded-md xl:py-1 xl:px-2 py-[3.32px] px-[6.64px] '>Edit</button>
                             </div>
                         </div>
                     ))}
@@ -261,7 +143,7 @@ export default function DocumentList() {
                                     {number}
                                 </option>
                             ))}
-                        </select></span> of {customersList.length} entries
+                        </select></span> of {documents?.length as number} entries
                     </div>
 
                     <div className="flex">

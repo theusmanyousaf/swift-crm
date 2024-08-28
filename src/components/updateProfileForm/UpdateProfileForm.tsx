@@ -13,7 +13,7 @@ import { useEdgeStore } from "@/lib/edgestore";
 import { toggleForm, toggleUplaod } from "@/store/slices/navSlice";
 import { SingleImageDropzone } from "../singleImageDropzone/SingleImageDropzone";
 import { addCustomers } from "@/constants/actions/customersActions";
-import { customers } from "@/constants/customers";
+import { customersApp } from "@/constants/customers";
 
 type InputType = z.infer<typeof UpdateProfileFormSchema>;
 

@@ -13,7 +13,9 @@ const CustomerList = () => {
         const loadCustomers = async () => {
             try {
                 const data = await fetchCustomers(); // Assuming fetchCustomers returns a promise that resolves to an array of customers
-                setCustomers(data as Customer[]);
+                if (data) {
+                    setCustomers(data);
+                }
             } catch (error) {
                 console.error("Error fetching customers:", error);
             }
@@ -31,10 +33,10 @@ const CustomerList = () => {
     };
 
     // Calculate the number of pages
-    const totalPages = Math.ceil(customers.length / itemsPerPage);
+    const totalPages = Math.ceil(customers?.length / itemsPerPage);
 
     // Get the customers for the current page
-    const currentCustomers = customers.slice(
+    const currentCustomers = customers?.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
@@ -60,7 +62,7 @@ const CustomerList = () => {
                 <div className='flex-1 py-[5.5px]  xl:min-w-[170px] min-w-[141px]'>address</div>
                 <div className='py-[5.5px] pr-10 xl:min-w-[107px] min-w-[89px]'>Status</div>
             </div>
-            {currentCustomers.map((customer) => (
+            {currentCustomers?.map((customer) => (
                 <div key={customer.CustomerID} className='flex gap-x-6 my-3 p-2 items-center bg-white rounded-md border text-gray-500 min-w-[842px] xl:text-sm text-xs font-medium xl:h-[47px] h-[39px]'>
                     <input type="checkbox" />
                     <div className='flex items-center w-full xl:min-w-60 min-w-[198px]'>
@@ -90,7 +92,7 @@ const CustomerList = () => {
                                 {number}
                             </option>
                         ))}
-                    </select></span> of {customers.length} entries
+                    </select></span> of {customers?.length} entries
                 </div>
 
                 <div className="flex">

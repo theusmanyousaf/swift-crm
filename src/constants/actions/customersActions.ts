@@ -3,7 +3,7 @@ import { NextResponse } from "next/server"
 import { db } from "../../../db"
 import { Customer } from "@prisma/client"
 
-export async function addCustomers(customer: Omit<Customer, "CustomerID">) {
+export async function addCustomers(customer: Omit<Customer, "CustomerID" | "createdAt">) {
     try {
         await db?.customer.create({
             data: {
@@ -17,8 +17,8 @@ export async function addCustomers(customer: Omit<Customer, "CustomerID">) {
 
 export async function fetchCustomers() {
     try {
-        const customer = await db.customer.findMany()
-        return customer
+        const customerArray = await db.customer.findMany()
+        return customerArray
     } catch (error) {
         console.log({message: "Failed to fetch Customers from database"})
     }
