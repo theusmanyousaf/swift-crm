@@ -1,6 +1,5 @@
 "use client"
 import { BsGraphUpArrow } from 'react-icons/bs';
-import Green from '/public/assets/GraphG.png';
 
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 
@@ -33,7 +32,6 @@ const data = {
     title: 'Total Profit',
     amount: '$ 3,393.00',
     change: '+ 3.4%',
-    trend: Green,
     color: 'bg-lime-200'
 }
 

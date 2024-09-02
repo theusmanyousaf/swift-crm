@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import { products } from '@/constants/bestSellingProducts'
 import Header from '@/components/header/Header'
+import { CiSquarePlus } from 'react-icons/ci'
 
 export default function Products() {
     return (
         <div className='lg:ml-10 w-full'>
-            <Header title='Products'/>
+            <Header title='Products' />
             <div className='flex flex-col gap-y-3 px-4 bg-white w-full border rounded-lg pt-5 pb-6 lg:mt-11'>
                 <div className='flex justify-between p-2 pr-6 text-sm font-semibold bg-purple-100 rounded-md gap-6'>
                     <h1 className='py-[5.5px] flex-1'>Product Name</h1>
@@ -30,6 +31,9 @@ export default function Products() {
                         <p className='font-semibold font-albert-sans pr-6'>${product.price}</p>
                     </div>
                 ))}
+            </div>
+            <div className="flex md:flex-row flex-col xl:gap-4 gap-[13px] mx-[10.28%] md:mx-0 font-albert-sans justify-end mt-5 md:mt-[57px] xl:mt-[71px]  mb-6 md:mb-[41px] xl:mb-[29px]">
+                <button className='flex items-center justify-center xl:gap-2 gap-[3.6px] bg-purple-600 rounded-md xl:text-base text-[13.28px] xl:px-3 px-[10px] py-[9px] font-semibold text-white'><CiSquarePlus size={20} /> Add Product</button>
             </div>
         </div>
     )

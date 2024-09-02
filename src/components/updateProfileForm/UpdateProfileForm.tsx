@@ -14,6 +14,8 @@ import { toggleForm, toggleUplaod } from "@/store/slices/navSlice";
 import { SingleImageDropzone } from "../singleImageDropzone/SingleImageDropzone";
 import { addCustomers } from "@/constants/actions/customersActions";
 import { customersApp } from "@/constants/customers";
+import { productData } from "@/constants/tempProduct";
+import { addProduct } from "@/constants/actions/storeActions";
 
 type InputType = z.infer<typeof UpdateProfileFormSchema>;
 
@@ -112,12 +114,14 @@ export default function UpdateProfileForm() {
                             className="absolute rounded-md flex items-center bg-white px-2.5 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 -mt-6"
                             onClick={
                                 async () => {
-                                    if (file) {
-                                        const res = await edgestore.publicFiles.upload({
-                                            file,
-                                        });
-                                        console.log("response", res)
-                                    }
+                                    // if (file) {
+                                    //     const res = await edgestore.publicFiles.upload({
+                                    //         file,
+                                    //     });
+                                    //     console.log("response", res)
+                                    // }
+                                    const res = productData.map(product=>addProduct(product))
+                                    console.log("product res",res)
                                 }
                             }
 

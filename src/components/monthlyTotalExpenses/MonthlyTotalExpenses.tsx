@@ -1,6 +1,5 @@
 "use client"
 import { BsGraphDownArrow } from 'react-icons/bs';
-import Red from '/public/assets/GraphR.png';
 
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 
@@ -32,7 +31,6 @@ const data = {
     title: 'Total Expenses',
     amount: '$ 1,467.00',
     change: '- 2.6%',
-    trend: Red,
     color: 'bg-red-200'
 }
 

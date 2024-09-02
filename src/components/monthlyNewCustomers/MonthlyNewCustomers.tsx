@@ -1,6 +1,5 @@
 "use client"
 import { BsPeople } from 'react-icons/bs';
-import Blue from '/public/assets/GraphB.png';
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 import {
     ChartConfig,

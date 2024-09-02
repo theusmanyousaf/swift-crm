@@ -19,34 +19,6 @@ const chartData = [
 ]
 
 const chartConfig = {
-  january: {
-    label: "January",
-    color: "hsl(var(--chart-5))",
-  },
-  feburary: {
-    label: "February",
-    color: "hsl(var(--chart-4))",
-  },
-  march: {
-    label: "March",
-    color: "hsl(var(--chart-3))",
-  },
-  april: {
-    label: "April",
-    color: "hsl(var(--chart-2))",
-  },
-  may: {
-    label: "May",
-    color: "hsla(354, 82%, 62%, 1)",
-  },
-  june: {
-    label: "June",
-    color: "hsla(208, 100%, 63%, 1)",
-  },
-  july: {
-    label: "July",
-    color: "hsla(264, 100%, 67%, 1)",
-  },
 } satisfies ChartConfig
 
 export default function MonthlyIncome() {

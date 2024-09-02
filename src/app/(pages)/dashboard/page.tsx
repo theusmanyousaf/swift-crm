@@ -5,8 +5,10 @@ import MonthlyIncome from "@/components/monthlyIncome/MonthlyIncome"
 import MonthlySummary from "@/components/monthlySummary/MonthlySummary"
 import MonthlyTarget from "@/components/monthlyTarget/MonthlyTarget"
 import NewCustomers from "@/components/newCustomers/NewCustomers"
+import { fetchProducts } from "@/constants/actions/productActions"
 
-export default function dashboard() {
+export default async function dashboard() {
+  const products = await fetchProducts();
   return (
     <div className="xl:ml-7 lg:ml-[41px] lg:mr-0 sm:mx-8 overflow-auto">
       <Hero />
@@ -18,7 +20,7 @@ export default function dashboard() {
           </div>
           <MonthlySummary />
         </div>
-        <BestSellingProducts />
+        <BestSellingProducts products={products} />
       </div>
       <div className="flex lg:flex-row flex-col xl:gap-[21px] lg:gap-[17px] gap-[42px] mt-[22px] mb-[67px]">
         <NewCustomers />

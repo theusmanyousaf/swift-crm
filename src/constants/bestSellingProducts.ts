@@ -15,6 +15,26 @@ type productsType = {
     totalQuantity?: number
 }
 
+export type BestProduct = {
+    totalQuantity: number;
+    transactionProducts: {
+        transaction: {
+            quantity: number;
+        };
+    }[];
+    _count: {
+        transactionProducts: number;
+    };
+    productId: string;
+    name: string;
+    imageUrl: string;
+    category: string;
+    cost: number;
+    price: number;
+    quantity: number;
+    createdAt: Date;
+    updatedAt: Date;
+}
 
 export const productsOrder: productsType[] = [
     {

@@ -9,7 +9,7 @@ import { createDocument } from '@/constants/actions/docActions';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
-export default function Form({ customers }: { customers: Customer[] }) {
+export default function DocumentCreateForm({ customers }: { customers: Customer[] }) {
     const [fileStates, setFileStates] = useState<FileState[]>([]);
     const [url, setUrl] = useState<string>()
     const { edgestore } = useEdgeStore();
