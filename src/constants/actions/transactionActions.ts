@@ -23,7 +23,8 @@ export async function fetchTransactions() {
                 customer: {
                     select: {
                         name: true,
-                        imageUrl: true
+                        imageUrl: true,
+                        country: true
                     }
                 },
                 product: {
@@ -31,7 +32,8 @@ export async function fetchTransactions() {
                         name: true,
                         imageUrl: true,
                         category: true,
-                        price: true
+                        price: true,
+                        cost: true
                     }
                 }
             }

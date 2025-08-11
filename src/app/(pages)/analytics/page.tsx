@@ -6,7 +6,7 @@ import SalesPerWeek from '@/components/salesPerWeek/SalesPerWeek'
 import SourcesOfPurchase from '@/components/sourcesOfPurchase/SourcesOfPurchase'
 import Visitors from '@/components/visitors/Visitors'
 
-export default function Analytics() {
+export default async function Analytics() {
   return (
     <div className='md:mx-[29px] mx-[10.28%] lg:mr-0'>
       <Header title='Analytics' />

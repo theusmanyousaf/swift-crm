@@ -1,11 +1,31 @@
 'use client'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Product } from '@prisma/client'
-import { TransactionType } from '@/constants/types/definitions'
+import { RootState, useAppDispatch } from '@/store/store'
+import { useSelector } from 'react-redux'
+import { fetchTransactionsAsync } from '@/store/slices/transactionsSlice'
+import { useEffect } from 'react'
+import { fetchProductsAsync } from '@/store/slices/productsSlice'
 
-export default function BestSellingProducts({ products, transactions }: { products?: Product[], transactions?: TransactionType[] }) {
-    const pathname = usePathname()
+export default function BestSellingProducts() {
+    const dispatch = useAppDispatch();
+    const { transactions } = useSelector((state: RootState) => state.transactions); 
+    const {products, error, status} = useSelector((state: RootState)=> state.products);
+    useEffect(() => {
+        dispatch(fetchTransactionsAsync());
+        dispatch(fetchProductsAsync());
+    }, [dispatch]);
+
+    if (status === 'loading') {
+        return <div>Loading...</div>;
+    }
+
+    if (status === 'failed') {
+        return <div>Error: {error}</div>;
+    }
+
+    const pathname = usePathname();
+
     return (
         pathname === '/dashboard'
             ? <div className='flex flex-col xl:gap-y-3 gap-y-[9.8px] xl:px-4 px-[13px] xl:pt-6 pt-5 pb-4 bg-white border rounded-lg mt-5 md:mt-0 mx-[10.28%] md:mx-0 min-w-[233px] xl:min-w-[285px] 2xl:w-full'>
@@ -38,7 +58,7 @@ export default function BestSellingProducts({ products, transactions }: { produc
                         </div>
                         <div className='flex flex-col justify-start flex-1 xl:min-w-[150px] min-w-[124.5px]'>
                             <p className='text-sm font-medium h-[18px]'>{transaction.quantity} pcs</p>
-                            <p className='text-sm font-medium text-gray-500 h-[18px]'>{transaction.createdAt.toLocaleDateString()}</p>
+                            <p className='text-sm font-medium text-gray-500 h-[18px]'>{transaction.createdAt}</p>
                         </div>
                         <div className='justify-start flex-1 xl:min-w-[107px] min-w-[88.8px]'>
                             <span className={`px-2 py-1 rounded-full text-xs font-bold ${transaction.quantity !== 0 ? 'bg-lime-100 text-lime-600' : 'bg-red-100 text-red-600'}`}>

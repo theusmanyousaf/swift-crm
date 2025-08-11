@@ -1,17 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 export default function useScreenWidth(innerWidth: number) {
-
-    const [isDesktop, setDesktop] = useState(window.innerWidth > innerWidth);
-
-    const updateMedia = () => {
-        setDesktop(window.innerWidth > innerWidth);
-    };
+    // Initialize state with a default value to avoid referencing window on the server
+    const [isDesktop, setDesktop] = useState<boolean>(false);
 
     useEffect(() => {
-        window.addEventListener("resize", updateMedia);
-        return () => window.removeEventListener("resize", updateMedia);
-    });
+        // Ensure window is defined before accessing it
+        const handleResize = () => {
+            setDesktop(window.innerWidth > innerWidth);
+        };
+
+        // Set the initial value
+        handleResize();
+
+        // Add event listener
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup event listener on component unmount
+        return () => window.removeEventListener('resize', handleResize);
+    }, [innerWidth]);
 
     return isDesktop;
 }

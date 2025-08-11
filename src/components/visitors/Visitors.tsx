@@ -7,6 +7,11 @@ import {
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart"
+import { getPastSevenDaysData } from "@/constants/formatingFunctions"
+import { RootState, useAppDispatch } from "@/store/store"
+import { useSelector } from "react-redux"
+import { useEffect } from "react"
+import { fetchTransactionsAsync } from "@/store/slices/transactionsSlice"
 
 const chartData = [
     { day: "1 Jul", visitors: 5834 },
@@ -26,12 +31,26 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export default function Visitors() {
+    const dispatch = useAppDispatch();
+    const { transactions, status, error } = useSelector((state: RootState) => state.transactions);
+    useEffect(() => {
+        dispatch(fetchTransactionsAsync());
+    }, [dispatch]);
+
+    const weekData = getPastSevenDaysData(transactions);
+
+    if (status === 'loading') {
+        return <div>Loading...</div>;
+    }
+
+    if (status === 'failed') {
+        return <div>Error: {error}</div>;
+    }
     return (
         <div className='flex flex-col gap-3 bg-white border rounded-lg py-6 px-4 w-full'>
             <h1 className='font-semibold'>Visitors</h1>
             <hr />
-            {/* <Image src={Graph} alt='graph' /> */}
-            <VisitorsGraph />
+            <VisitorsGraph chartData={weekData} />
             <hr />
             <div className='flex items-center gap-2'>
                 <BsAward className='text-purple-500 w-5 h-5' />
@@ -44,7 +63,14 @@ export default function Visitors() {
     )
 }
 
-function VisitorsGraph() {
+function VisitorsGraph({ chartData }: {
+    chartData: {
+        date: string;
+        Revenue: number;
+        Orders: number;
+        Expense: number;
+    }[]
+}) {
     return (
         <ChartContainer config={chartConfig}>
             <BarChart
@@ -56,31 +82,27 @@ function VisitorsGraph() {
             >
                 <CartesianGrid vertical={false} />
                 <XAxis
-                    dataKey="day"
+                    dataKey="date"
                     tickLine={false}
                     tickMargin={10}
                     axisLine={false}
-                    padding={{left:12,right:48}}   
+                    tickFormatter={(value) => {
+                        return new Date(value).toLocaleDateString("en-US", {
+                            day: "numeric",
+                            month: "short"
+                        })
+                    }}
                 />
-                <YAxis 
-                dataKey="visitors" 
-                tickLine={false} 
-                axisLine={false} 
-                tickFormatter={(value) => value !== 0 ? value / 1000 + "K" : value}
-                ticks={[0,5000,10000,15000,20000]}
+                <YAxis
+                    dataKey="Orders"
+                    tickLine={false}
+                    axisLine={false}
                 />
                 <ChartTooltip
                     cursor={false}
                     content={<ChartTooltipContent hideLabel />}
                 />
-                <Bar dataKey="visitors" fill="var(--color-visitors)" radius={1} >
-                    <LabelList
-                        position="top"
-                        offset={12}
-                        className="bg-red-700 rounded-full text-lime-50"
-                        fontSize={12}
-                    />
-                </Bar>
+                <Bar dataKey="Orders" fill="#C9F19C" radius={1} />
             </BarChart>
         </ChartContainer>
     )

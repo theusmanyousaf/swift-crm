@@ -28,8 +28,8 @@ export default async function RootLayout({
   const session = await auth();
   return (
     <html lang="en">
-      <SessionProvider session={session}>
-        <body  className={`${albertSans.variable} ${barlow.variable} bg-gray-50`}>
+      <SessionProvider session={session} >
+        <body className={`${albertSans.variable} ${barlow.variable} bg-gray-50 conatiner`}>
           {children}
         </body>
       </SessionProvider>

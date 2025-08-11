@@ -7,19 +7,21 @@ export type TransactionType = {
     customer: {
         name: string;
         imageUrl: string;
+        country: string
     };
     product: {
         name: string;
         imageUrl: string;
         category: string;
         price: number;
+        cost: number
     };
-  } & {
+} & {
     TransactionID: string;
     paymentStatus: string;
     quantity: number;
     amount: number;
-    createdAt: Date;
+    createdAt: string;
     CustomerID: string;
     productId: string;
-  }
+}

@@ -5,25 +5,9 @@ import { BsChevronRight, BsChevronLeft, BsChevronDown } from 'react-icons/bs';
 import { fetchCustomers } from '@/constants/actions/customersActions';
 import { Customer } from '@prisma/client';
 
-const CustomerList = () => {
+const CustomerList = ({customers}:{customers: Customer[]}) => {
 
-    const [customers, setCustomers] = useState<Customer[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    useEffect(() => {
-        const loadCustomers = async () => {
-            try {
-                const data = await fetchCustomers(); // Assuming fetchCustomers returns a promise that resolves to an array of customers
-                if (data) {
-                    setCustomers(data);
-                }
-            } catch (error) {
-                console.error("Error fetching customers:", error);
-            }
-        };
-
-        loadCustomers();
-    }, []);
-
     const [selectedNumber, setSelectedNumber] = useState<number>(10);
 
     const itemsPerPage = selectedNumber;

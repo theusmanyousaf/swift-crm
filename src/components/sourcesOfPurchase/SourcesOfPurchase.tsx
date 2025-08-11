@@ -7,7 +7,6 @@ import {
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart"
-import { sources } from "next/dist/compiled/webpack/webpack"
 
 // const chartData = [
 //     { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
@@ -67,7 +66,7 @@ const chartConfig = {
 
 export default function SourcesOfPurchase() {
     return (
-        <div className='flex flex-col gap-3 bg-white border rounded-lg pt-6 pb-3 px-4 w-full'>
+        <div className='flex flex-col gap-3 bg-white border rounded-lg pt-6 pb-3 px-4 xl:min-w-[428px] lg:min-w-[229px]'>
             <h1 className='font-semibold'>Sources Of Purchase</h1>
             <hr />
             {/* <Image src={Graph} alt='graph' /> */}

@@ -4,70 +4,61 @@ import { BsGraphUpArrow } from 'react-icons/bs';
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 
 import {
-    ChartConfig,
     ChartContainer,
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart"
-
-const chartData = [
-    { month: "January", desktop: 225 },
-    { month: "February", desktop: 250 },
-    { month: "March", desktop: 225 },
-    { month: "April", desktop: 325 },
-    { month: "May", desktop: 275 },
-    { month: "June", desktop: 300 },
-    { month: "July", desktop: 350 },
-]
-
-const chartConfig = {
-    desktop: {
-        label: "Desktop",
-        color: "#62912C",
-    },
-} satisfies ChartConfig
-
-const data = {
-    icon: BsGraphUpArrow,
-    title: 'Total Profit',
-    amount: '$ 3,393.00',
-    change: '+ 3.4%',
-    color: 'bg-lime-200'
-}
+import { RootState, useAppDispatch } from "@/store/store";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchTransactionsAsync } from "@/store/slices/transactionsSlice";
+import { getMonthlyFinancialData } from '@/constants/formatingFunctions';
 
 export default function MonthlyTotalProfit() {
+    const dispatch = useAppDispatch();
+    const { transactions } = useSelector((state: RootState) => state.transactions);
+    useEffect(() => {
+        dispatch(fetchTransactionsAsync());
+    }, [dispatch]);
+    const financialData = getMonthlyFinancialData(transactions)
+    const chartData = financialData.reverse()
+    const profit = financialData[financialData.length - 1]?.profit.toFixed(2)
     return (
         <div className="xl:px-4 px-[13px] xl:py-6 py-[19px] border rounded-lg bg-white w-full min-w-[190.6px]">
             <div className="flex bg-purple-500 rounded-full items-center justify-center xl:h-7 xl:w-7 h-[23px] w-[23px] xl:mb-3 mb-[10px]">
-                <data.icon className="text-white" size={12}/>
+                <BsGraphUpArrow className="text-white" size={12} />
             </div>
-            <h1 className="text-gray-500 font-semibold text-[15px] xl:max-h-[25px] max-h-[21px] xl:mb-3 mb-[10px]">{data.title}</h1>
+            <h1 className="text-gray-500 font-semibold text-[15px] xl:max-h-[25px] max-h-[21px] xl:mb-3 mb-[10px]">Total Profit</h1>
             <div className="flex items-center justify-between w-full xl:mb-3 mb-[10px]">
-                <h1 className="xl:text-2xl text-xl xl:max-h-[25px] max-h-[21px] font-bold">{data.amount}</h1>
-                <button className={`rounded-full text-[10.5px] ${data.color} px-2`}>{data.change}</button>
+                <h1 className="xl:text-2xl text-xl font-albert-sans xl:max-h-[25px] max-h-[21px] font-bold">${profit}</h1>
+                <button className={`rounded-full text-[10.5px] bg-lime-200 px-2`}>+ 3.4%</button>
             </div>
-            <ProfitGraph />
+            <ProfitGraph chartData={chartData} />
         </div>
     )
 }
 
 
-function ProfitGraph() {
+function ProfitGraph({ chartData }: {
+    chartData: {
+        month: string;
+        income: number;
+        expense: number;
+        profit: number;
+    }[]
+}) {
     return (
-        <ChartContainer config={chartConfig} className='w-full xl:h-[77px] h-[62.5px]'>
+        <ChartContainer config={{}} className='w-full xl:h-[77px] h-[62.5px]'>
             <LineChart
                 data={chartData}
             >
                 <CartesianGrid />
                 <XAxis
-                    ticks={[1,2,3,4,5,6,7]}
-                    domain={[0, 7]}
                     hide
+                    interval={0}
                     axisLine={false}
                 />
                 <YAxis
-                    ticks={[200, 225, 250, 275, 300, 325, 350]}
-                    domain={[200, 350]}
                     hide
                     interval={0}
                     axisLine={false}
@@ -77,12 +68,12 @@ function ProfitGraph() {
                     content={<ChartTooltipContent hideLabel />}
                 />
                 <Line
-                    dataKey="desktop"
+                    dataKey="profit"
                     type="linear"
-                    stroke="var(--color-desktop)"
+                    stroke="#62912C"
                     strokeWidth={2}
                     dot={{
-                        fill: "var(--color-desktop)",
+                        fill: "#62912C",
                         r: 1
                     }}
                 />

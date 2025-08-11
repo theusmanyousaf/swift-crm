@@ -1,19 +1,24 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
-import { customers } from '@/constants/customersData';
+import { RootState, useAppDispatch } from '@/store/store';
+import { useSelector } from 'react-redux';
+import { fetchTransactionsAsync } from '@/store/slices/transactionsSlice';
 
 const NewCustomers = () => {
+
+    const dispatch = useAppDispatch();
+    const { transactions, status, error } = useSelector((state: RootState) => state.transactions);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 
 
     // Calculate the number of pages
-    const totalPages = Math.ceil(customers.length / itemsPerPage);
+    const totalPages = Math.ceil(transactions.length / itemsPerPage);
 
     // Get the customers for the current page
-    const currentCustomers = customers.slice(
+    const currentTransactions = transactions.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
@@ -28,6 +33,17 @@ const NewCustomers = () => {
         setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
     };
 
+    useEffect(() => {
+        dispatch(fetchTransactionsAsync());
+    }, [dispatch]);
+
+    if (status === 'loading') {
+        return <div>Loading...</div>;
+    }
+
+    if (status === 'failed') {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <div className="xl:px-4 px-3 xl:pt-6 xl:pb-5 py-[19.6px] border bg-white rounded-lg overflow-x-auto ml-[10.28%] md:ml-0">
@@ -68,19 +84,19 @@ const NewCustomers = () => {
                 <div className='py-[5.5px] xl:min-w-[107px] min-w-[87.5px]'>Status</div>
                 <div className='py-[5.5px] xl:min-w-[126.5px] min-w-[103.5px]'>Total</div>
             </div>
-            {currentCustomers.map((customer) => (
-                <div key={customer.id} className='flex xl:gap-6 gap-[19.6px] xl:mt-3 mt-[9.5px] items-center xl:p-2 p-1.5 min-w-full rounded-lg text-gray-500 xl:text-sm text-xs font-medium'>
-                    <div className='xl:min-w-[126.5px] min-w-[103.5px]'>{customer.date}</div>
+            {currentTransactions.map((transaction) => (
+                <div key={transaction.TransactionID} className='flex xl:gap-6 gap-[19.6px] xl:mt-3 mt-[9.5px] items-center xl:p-2 p-1.5 min-w-full rounded-lg text-gray-600 xl:text-sm text-xs font-medium'>
+                    <div className='xl:min-w-[126.5px] min-w-[103.5px]'>{transaction.createdAt}</div>
                     <div className='flex items-center xl:min-w-[261px] min-w-[213.5px]'>
-                        <Image src={customer.imageUrl} alt={customer.name} className="xl:w-[31px] w-[25.7px] xl:h-[31px] h-[25.7px] rounded-full mr-2" />
-                        {customer.name}
+                        <Image src={transaction.customer.imageUrl} alt={transaction.customer.name} width={120} height={120} className="xl:w-[31px] w-[25.7px] xl:h-[31px] h-[25.7px] rounded-full mr-2" />
+                        {transaction.customer.name}
                     </div>
                     <div className='xl:min-w-[107px] min-w-[87.5px]'>
-                        <span className={`px-2 py-1 rounded-full xl:text-xs text-[10px] font-bold ${customer.status === 'Success' ? 'bg-lime-100 text-lime-600' : 'bg-red-100 text-red-600'}`}>
-                            {customer.status}
+                        <span className={`px-2 py-1 rounded-full xl:text-xs text-[10px] font-bold ${transaction.paymentStatus === 'paid' ? 'bg-lime-100 text-lime-600' : 'bg-red-100 text-red-600'}`}>
+                            {transaction.paymentStatus === "paid" ? "Success" : "Pending"}
                         </span>
                     </div>
-                    <div className='xl:min-w-[126.5px] min-w-[103.5px]'>{customer.amount}</div>
+                    <div className='xl:min-w-[126.5px] min-w-[103.5px]'>$ {transaction.amount.toFixed(2)}</div>
                 </div>
             ))}
 
